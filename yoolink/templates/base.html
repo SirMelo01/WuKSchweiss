@@ -339,27 +339,6 @@
 
     {% compress js inline %}
       <script defer src="{% static 'js/base.js' %}"></script>
-      <script>
-        var map = L.map('map').setView([53.699497, 10.742065], 16);
-
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    L.marker([53.699497, 10.742065]).addTo(map)
-        .bindPopup('W&K Schweißtechnik GmbH.<br> Bahnhofsallee 38, 23909 Ratzeburg.')
-        .openPopup();
-        const menu = document.querySelector("#navbar-cta");
-      
-        function toggleMenu() {
-          if (menu.classList.contains("hidden")) {
-            menu.classList.remove("hidden");
-          } else {
-            menu.classList.add("hidden");
-          }
-        }
-        
-      </script>
     {% endcompress js %}
     {% block javascriptend %}
     {% endblock javascriptend %}
