@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from yoolink.ycms.models import FAQ, UserSettings, Message, Product, TextContent, fileentry, Galerie, GaleryImage
+from yoolink.ycms.models import FAQ, UserSettings, Message, Product, OpeningHours, TextContent, fileentry, Galerie, GaleryImage
 import datetime
 from django.http import HttpResponseRedirect
 
@@ -56,6 +56,21 @@ def load_index(request):
 
     context["user_settings"] = UserSettings.objects.filter(user__is_staff=False).first()
 
+
+    if OpeningHours.objects.filter(day='MON').exists():
+        context["opening_mon"] = OpeningHours.objects.get(day='MON')
+    if OpeningHours.objects.filter(day='TUE').exists():
+        context["opening_tue"] = OpeningHours.objects.get(day='TUE')
+    if OpeningHours.objects.filter(day='WED').exists():
+        context["opening_wed"] = OpeningHours.objects.get(day='WED')  
+    if OpeningHours.objects.filter(day='THU').exists():
+        context["opening_thu"] = OpeningHours.objects.get(day='THU')
+    if OpeningHours.objects.filter(day='FRI').exists():
+        context["opening_fri"] = OpeningHours.objects.get(day='FRI')
+    if OpeningHours.objects.filter(day='SAT').exists():
+        context["opening_sat"] = OpeningHours.objects.get(day='SAT') 
+    if OpeningHours.objects.filter(day='SUN').exists():
+        context["opening_sun"] = OpeningHours.objects.get(day='SUN') 
 
     return render(request, 'pages/index.html', context=context)
 

@@ -626,23 +626,73 @@
             <div class="bg-white rounded-b-2xl border-b border-s border-e">
               <div class="flex justify-between px-3 py-2  text-xl">
                 <span class="font-semibold text-blue-500">Montag</span>
-                <span class="text-blue-500 font-semibold">08:00 <span>-</span> 16:00</span>
+                <span class="text-blue-500 font-semibold">
+                  {% if opening_mon and opening_mon.is_open %}
+                  {{opening_mon.start_time}} <span>-</span> {{opening_mon.end_time}}
+                  {% else %}
+                  Geschlossen
+                  {% endif %}
+                </span>
               </div>
               <div class="flex justify-between px-3 py-2 text-xl">
                 <span class="font-semibold  text-blue-500">Dienstag</span>
-                <span class="text-blue-500 font-semibold">08:00 <span>-</span> 16:00</span>
+                <span class="text-blue-500 font-semibold">
+                  {% if opening_tue and opening_tue.is_open %}
+                  {{opening_tue.start_time}} <span>-</span> {{opening_tue.end_time}}
+                  {% else %}
+                  Geschlossen
+                  {% endif %}
+                </span>
               </div>
               <div class="flex justify-between px-3 py-2  text-xl">
                 <span class="font-semibold  text-blue-500">Mittwoch</span>
-                <span class="text-blue-500 font-semibold">08:00 <span>-</span> 16:00</span>
+                <span class="text-blue-500 font-semibold">
+                  {% if opening_wed and opening_wed.is_open %}
+                  {{opening_wed.start_time}} <span>-</span> {{opening_wed.end_time}}
+                  {% else %}
+                  Geschlossen
+                  {% endif %}
+                </span>
               </div>
               <div class="flex justify-between px-3 py-2  text-xl">
                 <span class="font-semibold  text-blue-500">Donnerstag</span>
-                <span class="text-blue-500 font-semibold">08:00 <span>-</span> 16:00</span>
+                <span class="text-blue-500 font-semibold">
+                  {% if opening_thu and opening_thu.is_open %}
+                  {{opening_thu.start_time}} <span>-</span> {{opening_thu.end_time}}
+                  {% else %}
+                  Geschlossen
+                  {% endif %}
+                </span>
               </div>
               <div class="flex justify-between px-3 py-2  text-xl rounded-b-2xl">
                 <span class="font-semibold  text-blue-500">Freitag</span>
-                <span class="text-blue-500 font-semibold">08:00 <span>-</span> 16:00</span>
+                <span class="text-blue-500 font-semibold">
+                  {% if opening_fri and opening_fri.is_open %}
+                  {{opening_fri.start_time}} <span>-</span> {{opening_fri.end_time}}
+                  {% else %}
+                  Geschlossen
+                  {% endif %}
+                </span>
+              </div>
+              <div class="flex justify-between px-3 py-2  text-xl rounded-b-2xl">
+                <span class="font-semibold  text-blue-500">Samstag</span>
+                <span class="text-blue-500 font-semibold">
+                  {% if opening_sat and opening_sat.is_open %}
+                  {{opening_sat.start_time}} <span>-</span> {{opening_sat.end_time}}
+                  {% else %}
+                  Geschlossen
+                  {% endif %}
+                </span>
+              </div>
+              <div class="flex justify-between px-3 py-2  text-xl rounded-b-2xl">
+                <span class="font-semibold  text-blue-500">Sonntag</span>
+                <span class="text-blue-500 font-semibold">
+                  {% if opening_sun and opening_sun.is_open %}
+                  {{opening_sun.start_time}} <span>-</span> {{opening_sun.end_time}}
+                  {% else %}
+                  Geschlossen
+                  {% endif %}
+                </span>
               </div>
             </div>
           </div>
