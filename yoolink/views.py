@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from yoolink.ycms.models import FAQ, Message, TextContent, fileentry, Galerie, GaleryImage
+from django.shortcuts import get_object_or_404, render, redirect
+from yoolink.ycms.models import FAQ, Message, Product, TextContent, fileentry, Galerie, GaleryImage
 import datetime
 from django.http import HttpResponseRedirect
 
@@ -43,12 +43,9 @@ def load_index(request):
 
     return render(request, 'pages/index.html', context=context)
 
-def kontaktform(request):
-    success = False
-    current_date_time = datetime.datetime.now()
-    if request.method == 'POST':
-        Message.objects.create(name = request.POST["name"], email=request.POST['email'], message=request.POST['message'], date=current_date_time, seen=False)
+def shop(request):
+   return render(request, 'pages/shop.html', context={"products": Product.objects.filter(is_active=True)})
 
-        return render(request, 'pages/kontakt.html', {'success': True})
-
-    return render(request, 'pages/kontakt.html', {'success': success})
+def detail(request, product_id):
+     product = get_object_or_404(Product, id=product_id)
+     return render(request, 'pages/detail.html', context={"product": product})

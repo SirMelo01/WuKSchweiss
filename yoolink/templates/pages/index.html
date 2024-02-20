@@ -8,552 +8,658 @@
 
   {% block css %}
     {% compress css inline %}
-      <link href="{% static 'css/cardslider.css' %}" rel="stylesheet">
-      <link href="{% static 'css/wellen.css' %}" rel="stylesheet">
-      <link href="{% static 'css/fische.css' %}" rel="stylesheet">
-      <link href="{% static 'css/uboot.css' %}" rel="stylesheet">
+      
     {% endcompress css %}
   {% endblock css %}
 
 
-  <!--Kontaktbuttons Beginn-->
-  
-  {% block kontaktbuttons %}
-  <a href="{% url 'kontakt' %}">
-    <button type="button">
-      <div class="hidden md:block fixed z-50 bottom-12 right-8 bg-blue-900 rounded-full shadow-2xl p-3">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-7 h-7">
-          <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/>
-          <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/>
-        </svg>
-      </div>
-    </button>
-  </a>
-  <a href="tel:+491705977862">
-    <button>
-      <div class="hidden md:block fixed z-50 bottom-28 right-8 bg-blue-900 rounded-full shadow-2xl p-3">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-7 h-7">
-          <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd"/>
-        </svg>
-      </div>
-    </button>
-  </a>
-  {% endblock kontaktbuttons %}
-
-  <!--Kontaktbuttons Ende-->
-
-
-  <!--Templates Beginn-->
-  {% block Templates %}
-  <section class="bg-white mb-20">
-    <div class="flex flex-col items-center justify-center px-4 pt-6 mx-auto sm:max-w-xl md:max-w-full lg:pt-6 md:px-0">
-      <div class="flex flex-col items-center max-w-2xl md:px-8">
-        <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
-          <div class="text-center"> 
-            <h1 class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full ">
-              {{heroText.header}}
-            </h1>
-          </div>
-          <h2 class="max-w-lg mb-6 text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto text-center">
-            {{heroText.title}}
-          </h2>
-          <p class="text-base leading-7 text-gray-600 md:text-lg">
-            {{heroText.description}}
+  <!--Main Beginn-->
+  {% block Main %}
+  <div class="container min-h-screen mx-auto">
+    <!-- Hero Section -->
+    <section id="hero" class="mt-44">
+      <!-- Flex container -->
+      <div
+        class="container flex flex-col-reverse items-center px-6 mx-auto mt-6 space-y-0 md:space-y-0 md:flex-row mb-20">
+        <!-- Left item -->
+        <div class="flex flex-col w-full space-y-14">
+          <h1 class="text-4xl font-bold text-center xl:text-5xl md:text-left max-w-xl">
+            <span class="text-blue-600 font-bold text-6xl">34</span> Jahre W&K Schweißtechnik GmbH
+          </h1>
+          <p class="max-w-xl text-center text-gray-600 md:text-left">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi magni dolore cumque, at quam, accusantium
+            aliquid temporibus beatae quidem voluptas neque adipisci ullam doloremque exercitationem rem eius architecto
+            necessitatibus fuga?
           </p>
-        </div>
-      </div>
-
-      <!--Cardslider Beginn-->
-        <figure class="icon-cards mt-3">
-          <div class="icon-cards__content">
-            {% if heroImages %}
-              {% for img in heroImages %}
-              <div class="icon-cards__item d-flex align-items-center justify-content-center">
-                <img src="{{img.upload.url}}" alt="{{img.title}}"/>
-              </div>
-              {% endfor %}
-            {% else %}
-            <div class="icon-cards__item d-flex align-items-center justify-content-center">
-              <img src="{% static 'images/Template1.png' %}" alt="Template Design"/>
-            </div>
-            <div class="icon-cards__item d-flex align-items-center justify-content-center">
-              <img src="{% static 'images/Template2.png' %}" alt="Template Design"/>
-            </div>
-            <div class="icon-cards__item d-flex align-items-center justify-content-center">
-              <img src="{% static 'images/Template3.png' %}" alt="Template Design"/>
-            </div>
-            {% endif %}
-          </div>
-        </figure>
-        <div class="items-center justify-center mx-auto bg-blue-900 rounded-2xl mt-12">
-          <a href="{% url 'designtemplates:designtemplates' %}" aria-label="Webdesign-Vorlagen" title="Webdesign-Vorlagen"
-        class="inline-flex items-center justify-center h-12 px-6 font-medium  text-white transition duration-200 rounded">
-        Webdesign-Vorlagen
-      </a>
-        </div>
-      <!--Cardslider End-->
-    </div>
-  </section>
-  {% endblock Templates %}
-  <!--Templates End-->
-
-
-  <!--Wellen Beginn-->
-  {% block Wellen %}
-  <section class="bg-white">
-    <div>
-      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-        <defs>
-          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
-        </defs>
-        <g class="parallax">
-          <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(219,234,254,0.7)"/>
-          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(219,234,254,0.5)"/>
-          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(219,234,254,0.3)"/>
-          <use xlink:href="#gentle-wave" x="48" y="7" fill="#dbeafe" />
-        </g>
-      </svg>
-    </div>
-  </section>
-  {% endblock Wellen %}
-  <!--Wellen End-->
-
-
-  <!--Background-->
-  <div class="bg-blue-100">
-
-    <!--ResponsiveDesign Beginn -->
-    {% block ResponsiveDesign %}
-    <section class="scroll-my-4 -mb-0 xs:-mb-48 lg:-mb-0" id="Responsive">
-      <div class="flex flex-col justify-between max-w-xl px-4 mx-auto lg:pt-16 lg:flex-row md:px-8 lg:max-w-screen-xl">
-        <div class="pt-14 mb-5 lg:mb-0 lg:pt-32 lg:max-w-lg lg:pr-1 xl:ml-10">
-          <div class="w-6xl mb-5">
-            <div>
-              <h3 class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-                {{responsiveText.header}}
-              </h3>
-            </div>
-            <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
-              {{responsiveText.title}}
-            </h2>
-            <p class="text-base leading-7 text-gray-600 md:text-lg ">
-              {{responsiveText.description}}
-            </p>
-            <br/>
-            <div class="flex">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"/>
-              </svg>
-              <label class="relative inline-flex items-center mb-5 mx-3 cursor-pointer">
-                <input type="checkbox" value="" class="sr-only peer" onclick="toggleResponsive()"/>
-                <div class="w-14 h-7 bg-blue-300 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-blue-900"></div>
-              </label>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/>
-              </svg>
-            </div>
+          <div class="flex justify-center md:justify-start">
+            <a href="#contact" class="p-3 px-6 pt-2 text-white bg-blue-600 rounded-full baseline hover:bg-blue-700">
+              Kontakt
+            </a>
           </div>
         </div>
-        <!--Imageslider-->
-        <div class="container content-center px-1">
-          <!--Browser-->
-          <div class="container animate-fade-in-down xs:h-129 sm:h-130 md:h-131 relative" id="browser">
-            <img src="{% static 'images/MacBookPro16.png' %}" class="absolute xs:object-top lg:object-center h-full w-full object-contain z-10" alt="MacBookPro16 Bezel"/>
-            <span id="desktopSlider">
-              {% if responsiveDesktopImages %}
-                {% for image in responsiveDesktopImages %}
-                  {% if forloop.first %}
-                    <img src="{{image.upload.url}}" class="relative h-full w-full object-contain xs:object-top lg:object-center" title="{{image.title}}" alt="{{image.title}}"/>
-                  {% else %}
-                    <img src="{{image.upload.url}}" class="hidden relative h-full w-full object-contain xs:object-top lg:object-center" title="{{image.title}}" alt="{{image.title}}"/>
-                  {% endif %}
-                {% endfor %}
-              {% else %}
-                <img src="{% static 'images/MacBook-RSAutoglas1.png' %}" class="relative h-full w-full object-contain xs:object-top lg:object-center" alt="MacBookPro16 Bezel RS-Autoglas"/>
-                <img src="{% static 'images/MacBook-RSAutoglas2.png' %}" class="hidden relative h-full w-full object-contain xs:object-top lg:object-center" alt="MacBookPro16 Bezel RS-Autoglas"/>
-              {% endif %}
-            </span>
-          </div>
-          <!--Phone-->
-          <div class="hidden container animate-fade-in-down xs:h-129 sm:h-130 md:h-131 relative" id="phone">
-            <img src="{% static 'images/iPhone-Frame.png' %}" class="absolute h-full w-full object-contain z-10" alt="iPhone-Frame Bezel"/>
-            <span id="handySlider">
-              {% if responsiveHandyImages %}
-                {% for image in responsiveHandyImages %}
-                  {% if forloop.first %}
-                    <img src="{{image.upload.url}}" class="relative h-full w-full object-contain" title="{{image.title}}" alt="{{image.title}}"/>
-                  {% else %}
-                    <img src="{{image.upload.url}}" class="hidden relative h-full w-full object-contain" title="{{image.title}}" alt="{{image.title}}"/>
-                  {% endif %}
-                {% endfor %}
-              {% else %}
-              <img src="{% static 'images/iPhone-RSAutoglas.png' %}" class="relative h-full w-full object-contain" alt="iPhone-Frame Bezel RS-Autoglas"/>
-              <img src="{% static 'images/iPhone-RSAutoglas.png' %}" class="hidden relative h-full w-full object-contain" alt="iPhone-Frame Bezel RS-Autoglas"/>
-              {% endif %}
-              
-            </span>
-          </div>
+        <!-- Image -->
+        <div class="w-full">
+          <img src="{% static 'images/welding.jpg' %}"
+            class="rounded-lg hidden md:block" alt="">
         </div>
       </div>
     </section>
-    {% endblock ResponsiveDesign %}
-    <!--ResponsiveDesign End-->
-
-
-    <!--Referenzen Beginn
-    {% block Referenzen %}
-    <section class="bg-blue-100">
-      <br/><br/><br/><br/><br/>
+    <!-- Dienstleistungen -->
+    <section id="Dienstleistungen">
       <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-        <div class="flex flex-col mb-6 lg:justify-between lg:flex-row md:mb-8">
-          <h2 class="max-w-lg mb-5 font-sans text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl sm:leading-none md:mb-6 group">
-            <span class="inline-block mb-1 sm:mb-4">
-              Referenzen<br class="hidden md:block" />
-              der Kunden
-            </span>
-            <div class="h-1 ml-auto duration-300 origin-left transform bg-deep-purple-accent-400 scale-x-30 group-hover:scale-x-100"></div>
-          </h2>
-          <p class="text-gray-700 lg:text-md lg:max-w-md">
-            Gerne können Sie sich ein Bild von unseren erfolgreichen Projekten
-            machen und diese als Refernez oder Inspiration für die eigene
-            Website nuten.
-          </p>
-        </div>
-      <div class="grid gap-6 row-gap-5 mb-8 lg:grid-cols-4 sm:row-gap-6 sm:grid-cols-2">
-        <a href="/" aria-label="View Item">
-          <div class="relative overflow-hidden transition duration-200 transform rounded shadow-lg hover:-translate-y-2 hover:shadow-2xl">
-            <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="{% static 'images/RSAutoglas-Logo.png' %}" alt=""/>
-            <div class="absolute inset-0 px-6 py-4 transition-opacity duration-200 bg-blue-900 bg-opacity-75 opacity-0 hover:opacity-100">
-              <p class="mb-4 text-lg font-bold text-gray-100">RS-Autoglas</p>
-              <p class="text-sm tracking-wide text-gray-300">RS-Autoglas ist ein....</p>
-            </div>
-          </div>
-        </a>
-        <a href="/" aria-label="View Item">
-          <div class="relative overflow-hidden transition duration-200 transform rounded shadow-lg hover:-translate-y-2 hover:shadow-2xl">
-            <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="" alt=""/>
-            <div class="absolute inset-0 px-6 py-4 transition-opacity duration-200 bg-blue-900 bg-opacity-75 opacity-0 hover:opacity-100">
-              <p class="mb-4 text-lg font-bold text-gray-100">Hier könnte Ihr Name stehen</p>
-              <p class="text-sm tracking-wide text-gray-300">....</p>
-            </div>
-          </div>
-        </a>
-        <a href="/" aria-label="View Item">
-          <div class="relative overflow-hidden transition duration-200 transform rounded shadow-lg hover:-translate-y-2 hover:shadow-2xl">
-            <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="" alt=""/>
-            <div class="absolute inset-0 px-6 py-4 transition-opacity duration-200 bg-blue-900 bg-opacity-75 opacity-0 hover:opacity-100">
-              <p class="mb-4 text-lg font-bold text-gray-100">Hier könnte Ihr Name stehen</p>
-              <p class="text-sm tracking-wide text-gray-300">....</p>
-            </div>
-          </div>
-        </a>
-        <a href="/" aria-label="View Item">
-          <div class="relative overflow-hidden transition duration-200 transform rounded shadow-lg hover:-translate-y-2 hover:shadow-2xl">
-            <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="" alt=""/>
-            <div class="absolute inset-0 px-6 py-4 transition-opacity duration-200 bg-blue-900 bg-opacity-75 opacity-0 hover:opacity-100">
-              <p class="mb-4 text-lg font-bold text-gray-100">Hier könnte Ihr Name stehen</p>
-              <p class="text-sm tracking-wide text-gray-300">....</p>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </section>
-    {% endblock Referenzen %}
-    Referenzen End-->
-
-
-    <!--CMS Beginn-->
-    {% block CMSDetail %}
-    <section class="-scroll-my-14" id="Cms">
-      <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
-        <div class="relative isolate overflow-visible px-6 pt-16 sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0 lg:mt-20">
-          <!-- Foto-PC -->
-          <div class="relative lg:mt-16 lg:mb-28 h-auto m-8 -ml-24 w-2/3 overflow-hidden shadow-2xl rounded-md hidden lg:block">
-            <img class="absolute left-0 top-0 w-[45rem] max-w-none" title="{% if cmsImage %}{{cmsImage.title}}{% endif %}" src="{% if cmsImage %}{{cmsImage.file.url}}{% else %}{% static 'images/cms-screen.png' %}{% endif %}" alt="{% if cmsImage %}{{cmsImage.title}}{% endif %}">
-          </div>
-          <div class="mx-auto max-w-[30rem] lg:mx-0 lg:flex-auto lg:py-16 lg:text-left">
-            <h3 class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-             {{cmsText.header}}
-            </h3>
-            <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-gray-900">{{cmsText.title}}</h2>
-            <p class="mt-6 text-base leading-7 md:text-lg text-gray-600">
-              {{cmsText.description}}
-            </p>
-            <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-              <a href="{% url 'home' %}#Preise" class="rounded-md bg-blue-300 text-white px-3.5 py-2.5 text-sm font-semibold shadow-sm">{{cmsText.buttonText}}</a>
-              <a href="#" class="text-sm font-semibold leading-6">Erfahre mehr <span aria-hidden="true">→</span></a>
-            </div>
-            <!-- Foto-Mobil -->
-            <div class="relative h-80 mt-16 overflow-hidden rounded-md block lg:hidden">
-              <img class="absolute  left-0 top-0 w-[50rem] max-w-none" title="{% if cmsImage %}{{cmsImage.title}}{% endif %}" src="{% if cmsImage %}{{cmsImage.file.url}}{% else %}{% static 'images/cms-screen.png' %}{% endif %}" alt="{% if cmsImage %}{{cmsImage.title}}{% endif %}">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    {% endblock CMSDetail %}
-    <!--CMS End-->
-
-
-    <!--Skills Beginn-->
-    {% block Skills %}
-    <section class="scroll-my-4" id="Skills">
-      <div class="pb-20 sm:pb-32 pt-20 sm:pt-20">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <div class="mx-auto max-w-2xl lg:text-center">
-            <h3 class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-              KNOW-HOW
-             </h3>
-            <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Fähigkeiten & Kenntnisse</h2>
-            <p class="mt-6 text-base md:text-lg leading-8 text-gray-600">Als erfahrenes Webdesign-Team verfügen wir über ein breites Spektrum an Fähigkeiten und Kompetenzen, um Ihre digitalen Projekte zum Erfolg zu führen. Unser Skillset umfasst die neuesten Technologien, um funktionale und benutzerfreundliche Websites zu gestalten.</p>
-          </div>
-          <div class="mx-auto mt-12 max-w-2xl sm:mt-14 lg:mt-16 lg:max-w-5xl">
-            <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 md:max-w-none lg:grid-cols-3 lg:gap-y-16">
-              <div class="relative">
-                <dt class="text-base font-semibold leading-7 text-gray-900">Designkonzept</dt>
-                <dd class="mt-2 text-base leading-7 text-gray-600">Unser Designkonzept basiert auf der Idee, dass jede Website einzigartig sein sollte, um die Identität Ihres Unternehmens bestmöglich widerzuspiegeln. Wir setzen auf maßgeschneiderte Lösungen, die auf Ihre speziellen Anforderungen zugeschnitten sind. Unsere Designs sind benutzerorientiert, um eine bestmögliche Erfahrung auf Ihrer Website sicherzustellen</dd>
-              </div>
-              <div class="relative">
-                <dt class="text-base font-semibold leading-7 text-gray-900">SEO Strategien</dt>
-                <dd class="mt-2 text-base leading-7 text-gray-600">Wir sind Experten in Sachen Suchmaschinenoptimierung (SEO) und nutzen Blogs als leistungsstarkes Werkzeug, um organischen Traffic zu generieren. Unsere Strategien umfassen Keyword-Recherche, mobile Optimierung und die Erstellung hochwertiger Blog-Inhalte. Durch unser CMS-System können Sie Blogs jeder Zeit selber erstellen und anpassen.</dd>
-              </div>
-              <div class="relative">
-                <dt class="text-base font-semibold leading-7 text-gray-900">Technischen Fähigkeiten</dt>
-                <dd class="mt-2 text-base leading-7 text-gray-600">Unsere technischen Fähigkeiten bilden das Fundament unserer Dienstleistungen. Von der Frontend-Entwicklung bis zur Backend-Programmierung sind wir in der Lage, Websites zu gestalten, die nicht nur visuell ansprechend sind, sondern auch reibungslos funktionieren und den neuesten technischen Standards entsprechen.</dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-      </div>
-    </section>
-    {% endblock Skills %}
-    <!--Skills End-->
-
-
-
-    <!--Pricing Beginn-->
-    {% block Pricing %}
-    <section class="scroll-my-4" id="Preise">
-      <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-        <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+        <div class="max-w-xl mb-10 md:mx-auto text-center lg:max-w-2xl md:mb-12">
           <div>
-            <h3 class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-              {{priceText.header}}
-            </h3>
+            <p
+              class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-blue-500 uppercase rounded-full">
+              Dienstleistungen
+            </p>
           </div>
-          <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight sm:text-4xl md:mx-auto">
-            <span class="relative inline-block">
-              <span class="relative text-gray-900">{{priceText.title}}</span>
-            </span>
+          <h2
+            class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+            Dienstleistungen
           </h2>
           <p class="text-base text-gray-700 md:text-lg">
-            {{priceText.description}}
+            Meine Tätigkeitsbereiche
           </p>
         </div>
-        <div class="grid max-w-md gap-10 lg:gap-0 row-gap-5 lg:max-w-screen-lg sm:row-gap-10 lg:grid-cols-3 xl:max-w-screen-lg sm:mx-auto">
-          <div class="lg:scale-90 flex flex-col justify-between p-8 transition-shadow duration-300 bg-blue-300 rounded-2xl shadow-2xl sm:items-center hover:shadow">
-            <div class="text-center">
-              <div class="text-lg font-semibold">Standard </div>
-              <div class="flex items-center justify-center mt-2">
-                <div class="mr-1 text-5xl font-bold">20 €</div>
-                <div class="text-gray-700">/ Monat</div>
-              </div>
-              <div class="mt-2 space-y-3">
-                <div class="text-black text-lg">250 € Einmalzahlung</div>
-                <div class="text-gray-700">1-Domain</div>
-                <div class="text-gray-700">Cookies</div>
-                <div class="text-gray-700">Optimiert für alle Geräte</div>
-                <div class="text-gray-700">Datenschutz und Impressum</div>
-                <div class="text-gray-700">Funktionen: Karte, Galerie, etc.</div>
+        <div class="grid max-w-screen-lg gap-8 row-gap-10 mx-auto lg:grid-cols-2">
+          <div class="flex flex-col max-w-full sm:max-w-md sm:mx-auto sm:flex-row">
+            <div class="mr-4 flex justify-center">
+              <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full text-blue-500 bg-blue-100">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z" />
+                </svg>
               </div>
             </div>
-            <div>
-              <a href="{% url 'kontakt' %}" class="inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-200 bg-blue-900 rounded shadow-md hover:bg-gray-900 focus:shadow-outline focus:outline-none">
-                Kontaktieren Sie uns
-              </a>
-              <p class="max-w-xs mt-6 text-xs text-gray-600 sm:text-sm sm:text-center sm:max-w-sm sm:mx-auto">
-                Dieses Angebot gilt für einfaches Webdesign, siehe Vorlagen.
+            <div class="text-center sm:text-left">
+              <h6 class="mb-3 text-xl font-bold leading-5">Schweißtechnik und Qualitätsmanagement</h6>
+              <p class="mb-3 text-sm text-gray-900">
+                In meinem Fachgebiet der Schweißtechnik konzentriere ich mich darauf, höchste Qualitätsstandards zu gewährleisten. Von der Auswahl der richtigen Schweißverfahren bis zur genauen Überwachung jedes Schweißvorgangs – meine Dienstleistungen sind darauf ausgerichtet, sicherzustellen, dass Ihre geschweißten Konstruktionen den strengsten Anforderungen entsprechen.
               </p>
-            </div>
-          </div>
-          <div class="flex flex-col justify-between p-8 transition-shadow duration-300 bg-blue-300 rounded-2xl shadow-2xl sm:items-center hover:shadow">
-            <div class="text-center">
-              <div class="text-lg font-semibold">Dynamische Seite </div>
-              <div class="flex items-center justify-center mt-2">
-                <div class="mr-1 text-5xl font-bold">30 €</div>
-                <div class="text-gray-700">/ Monat</div>
-              </div>
-              <div class="mt-2 space-y-3">
-                <div class="text-black text-lg">500 € Einmalzahlung</div>
-                <div class="text-gray-700">siehe Standard</div>
-                <div class="text-gray-700">+</div>
-                <div class="text-gray-700">Content Management System</div>
-                <div class="text-gray-700">Schulung für die Benutzung</div>
-
-              </div>
-            </div>
-            <div>
               
-              <a href="{% url 'kontakt' %}" class="inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-200 bg-blue-900 rounded shadow-md hover:bg-gray-900 focus:shadow-outline focus:outline-none">
-                Kontaktieren Sie uns
-              </a>
-              <p class="max-w-xs mt-6 text-xs text-gray-600 sm:text-sm sm:text-center sm:max-w-sm sm:mx-auto">
-                Unser Eigens entwickeltes Content Managment System, individuell angepasst für Ihre Website.
-              </p>
             </div>
           </div>
-          <div class="lg:scale-90 flex flex-col justify-between p-8 transition-shadow duration-300 bg-blue-300 rounded-2xl shadow-2xl sm:items-center hover:shadow">
-            <div class="text-center">
-              <div class="text-lg font-semibold">Individuelles Angebot</div>
-              <div class="flex items-center justify-center mt-2">
-                <div class="mr-1 text-5xl font-bold">? €</div>
-                <div class="text-gray-700">/ Monat</div>
-              </div>
-              <div class="mt-2 space-y-3">
-                <div class="text-black text-lg">? € Einmalzahlung</div>
-                <div class="text-gray-700">Gerne erarbeiten wir</div>
-                <div class="text-gray-700">gemeinsam mit Ihnen</div>
-                <div class="text-gray-700">individuelle Softwarelösungen</div>
-                <div class="text-gray-700">und Eigenprogrammierungen</div>
+          <div class="flex flex-col max-w-full sm:max-w-md sm:mx-auto sm:flex-row">
+            <div class="mr-4 flex justify-center">
+              <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full text-blue-500 bg-blue-100">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                </svg>
               </div>
             </div>
-            <div>
-              <a href="{% url 'kontakt' %}" class="inline-flex items-center justify-center w-full h-12 px-6 mt-6 font-medium tracking-wide text-white transition duration-200 bg-blue-900 rounded shadow-md hover:bg-gray-900 focus:shadow-outline focus:outline-none">
-                Kontaktieren Sie uns
-              </a>
-              <p class="max-w-xs mt-6 text-xs text-gray-600 sm:text-sm sm:text-center sm:max-w-sm sm:mx-auto">
-                Dieses Angebot gilt für komplexe und individuelle Lösungen.
+            <div class="text-center sm:text-left">
+              <h6 class="mb-3 text-xl font-bold leading-5">Schweißinspektion und Qualitätssicherung:</h6>
+              <p class="mb-3 text-sm text-gray-900">
+                Die Qualitätssicherung ist ein unverzichtbarer Bestandteil meiner Dienstleistungen. Durch präzise Schweißinspektionen und die Anwendung strenger Qualitätskontrollverfahren gewährleiste ich, dass Ihre geschweißten Produkte höchsten Standards entsprechen. Vertrauen Sie auf meine Expertise, um Mängel zu vermeiden und die Langlebigkeit Ihrer Konstruktionen zu sichern.
               </p>
+             
+            </div>
+          </div>
+          <div class="flex flex-col max-w-full sm:max-w-md sm:mx-auto sm:flex-row">
+            <div class="mr-4 flex justify-center">
+              <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full text-blue-500 bg-blue-100">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0118 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3l1.5 1.5 3-3.75" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center sm:text-left">
+              <h6 class="mb-3 text-xl font-bold leading-5">Schweißverfahrensoptimierung</h6>
+              <p class="mb-3 text-sm text-gray-900">
+                Die Optimierung von Schweißverfahren ist entscheidend für die Effizienz und Qualität Ihrer Arbeit. Ich stehe Ihnen zur Seite, um innovative Lösungen zu entwickeln, Arbeitsabläufe zu optimieren und sicherzustellen, dass Sie stets die neuesten Entwicklungen in der Schweißtechnologie nutzen, um erstklassige Ergebnisse zu erzielen.
+              </p>
+             
             </div>
           </div>
           
+          <div class="flex flex-col max-w-full sm:max-w-md sm:mx-auto sm:flex-row">
+            <div class="mr-4 flex justify-center">
+              <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full text-blue-500 bg-blue-100">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                </svg>
+              </div>
+            </div>
+            <div class="text-center sm:text-left">
+              <h6 class="mb-3 text-xl font-bold leading-5">Produkte</h6>
+              <p class="mb-3 text-sm text-gray-900">
+                Von präzisen Schweißgeräten bis zu hochwertigen Schweißzusatzwerkstoffen bieten wir Ihnen alles, was Sie für herausragende Ergebnisse benötigen. Unsere Schweißgeräte stehen für Spitzenleistung und Zuverlässigkeit, während unsere Schweißzusatzwerkstoffe die perfekte Ergänzung für starke Verbindungen sind.
+              </p>
+              
+            </div>
+          </div>
         </div>
       </div>
     </section>
-    {% endblock Pricing %}
-    <!--Pricing End-->
-
-
-
-    <!--Team Beginn-->
-    {% block Team %}
-    <section class="scroll-my-4" id="Team">
+    <!-- Workflow -->
+    <section>
       <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-        <div class="mx-auto mb-10 lg:max-w-xl sm:text-center">
-          <h2 class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-            {{teamText.header}}
+        <div class="grid gap-6 row-gap-10 lg:grid-cols-2">
+          <div class="lg:py-6 lg:pr-16">
+            <div class="flex">
+              <div class="flex flex-col items-center mr-4">
+                <div>
+                  <div class="flex items-center justify-center w-10 h-10 border rounded-full">
+                    <svg class="w-4 text-gray-600" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" viewBox="0 0 24 24">
+                      <line fill="none" stroke-miterlimit="10" x1="12" y1="2" x2="12" y2="22"></line>
+                      <polyline fill="none" stroke-miterlimit="10" points="19,15 12,22 5,15"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="w-px h-full bg-gray-300"></div>
+              </div>
+              <div class="pt-1 pb-8">
+                <p class="mb-2 text-lg font-bold">Anfallende Büroarbeit</p>
+                <p class="text-gray-700">Buchhaltung, Steuererklärung, etc.</p>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex flex-col items-center mr-4">
+                <div>
+                  <div class="flex items-center justify-center w-10 h-10 border rounded-full">
+                    <svg class="w-4 text-gray-600" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" viewBox="0 0 24 24">
+                      <line fill="none" stroke-miterlimit="10" x1="12" y1="2" x2="12" y2="22"></line>
+                      <polyline fill="none" stroke-miterlimit="10" points="19,15 12,22 5,15"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="w-px h-full bg-gray-300"></div>
+              </div>
+              <div class="pt-1 pb-8">
+                <p class="mb-2 text-lg font-bold">Kontaktaufnahme</p>
+                <p class="text-gray-700">
+                  Vereinabaren Sie einen Termin mit mir über die angegebenen
+                  Kontaktwege.
+                </p>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex flex-col items-center mr-4">
+                <div>
+                  <div class="flex items-center justify-center w-10 h-10 border rounded-full">
+                    <svg class="w-4 text-gray-600" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" viewBox="0 0 24 24">
+                      <line fill="none" stroke-miterlimit="10" x1="12" y1="2" x2="12" y2="22"></line>
+                      <polyline fill="none" stroke-miterlimit="10" points="19,15 12,22 5,15"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="w-px h-full bg-gray-300"></div>
+              </div>
+              <div class="pt-1 pb-8">
+                <p class="mb-2 text-lg font-bold">Individuelle Absprache</p>
+                <p class="text-gray-700">
+                  Geimansam bespreche ich mit Ihnen zusammen die anfallende
+                  Arbeit und gebe Ihnen ein auf Sie abgestimmtes Angebot.
+                </p>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex flex-col items-center mr-4">
+                <div>
+                  <div class="flex items-center justify-center w-10 h-10 border rounded-full">
+                    <svg class="w-4 text-gray-600" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" viewBox="0 0 24 24">
+                      <line fill="none" stroke-miterlimit="10" x1="12" y1="2" x2="12" y2="22"></line>
+                      <polyline fill="none" stroke-miterlimit="10" points="19,15 12,22 5,15"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="w-px h-full bg-gray-300"></div>
+              </div>
+              <div class="pt-1 pb-8">
+                <p class="mb-2 text-lg font-bold">Ausführung</p>
+                <p class="text-gray-700">
+                  Im nächsten Schritt erledige ich die Arbeit und gebe Ihnen
+                  Rückmeldung.
+                </p>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex flex-col items-center mr-4">
+                <div>
+                  <div class="flex items-center justify-center w-10 h-10 border rounded-full">
+                    <svg class="w-6 text-gray-600" stroke="currentColor" viewBox="0 0 24 24">
+                      <polyline fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-miterlimit="10" points="6,12 10,16 18,8"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-1">
+                <p class="mb-2 text-lg font-bold"></p>
+                <p class="text-gray-700">
+                  Sie erhalten ihre Ware bearbeitet zurück.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <img class="inset-0 object-cover object-bottom w-full rounded-xl shadow-lg h-96 lg:absolute lg:h-full"
+              src="{% static 'images/welding02.jpg' %}"
+              alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Unsere Empfehlungen -->
+    <section id="Empfehlungen">
+      <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <div class="max-w-xl mb-10 md:mx-auto text-center lg:max-w-2xl md:mb-12">
+          <div>
+            <p
+              class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-blue-500 uppercase rounded-full">
+              Unsere Empfehlungen
+            </p>
+          </div>
+          <h2
+            class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+            Angebote
           </h2>
-          <p class="text-base leading-8 text-gray-600 md:text-lg">
-            {{teamText.description}}
-          </p>
+          <a href="shop" class="text-base text-gray-800 md:text-lg flex justify-center items-center">
+            Alle Produkte anzeigen
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+              fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M1 5h12m0 0L9 1m4 4L9 9" />
+            </svg>
+          </a>
         </div>
-        <div class="grid gap-10 mx-auto sm:grid-cols-2 lg:max-w-screen-md">
-          <div>
-            <div class="relative pb-56 mb-4 rounded shadow lg:pb-64">
-              <img class="absolute object-cover w-full h-full rounded-xl" src="{% static 'images/Sebastian.jpeg' %}" alt="Sebastian Rauch"/>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-screen-lg gap-4 row-gap-4 mx-auto">
+
+          <!-- Shopping Card -->
+        <a href="">
+          <div class="h-fit rounded-2xl border bg-white p-2 shadow-xl hover:shadow-blue-200">
+            <div class="flex items-center justify-center">
+              <img src="https://www.schweisshelden.de/media/catalog/product/cache/26b8e7d72a82cd8e8dfb76d6d0c69771/1/1/111_636419.jpg" alt="" class="w-48 max-w-full" />
             </div>
-            <div class="flex flex-col sm:text-center">
-              <p class="text-lg font-bold text-blue-900">Sebastian Rauch</p>
-              <p class="mb-5 text-xs text-gray-800">Product Manager</p>
+  
+            <h3 class="text-base font-semibold uppercase">AKKU-KETTENSÄGE MSA 60 - AK-SYSTEM</h3>
+            <p class="mt-3 text-sm text-slate-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit...</p>
+            <div class="mt-4 flex items-center justify-between text-xs text-slate-500">
+              <div class="flex items-center">
+                <div class="mr-2 h-2 w-2 rounded-full bg-green-600"></div>
+                <span>Auf Lager</span>
+              </div>
+              <div class="flex items-center">
+                <div class="ml-2 mr-2 h-2 w-2 rounded-full bg-green-600"></div>
+                <span>Lieferbar</span>
+              </div>
+            </div>
+            <div class="mt-4 flex justify-between">
+              <span class="font-bold">Ab <span class="text-blue-500">339,00€</span><span class="ml-2 text-xs font-normal text-gray-500">statt 339,00€</span></span>
+  
+              <div class="flex w-6 items-center justify-center rounded-full bg-blue-600 text-white hover:cursor-pointer hover:bg-blue-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+                </svg>
+              </div>
             </div>
           </div>
-          <div>
-            <div class="relative pb-56 mb-4 rounded shadow lg:pb-64">
-              <img class="absolute object-cover w-full h-full rounded-xl" src="{% static 'images/Lennert.jpg' %}" alt="Lennert Meißner"/>
+        </a>
+        <!-- Shopping Card -->
+        <a href="">
+          <div class="h-fit rounded-2xl border bg-white p-2 shadow-xl hover:shadow-blue-200">
+            <div class="flex items-center justify-center">
+              <img src="https://www.schweisshelden.de/media/catalog/product/cache/26b8e7d72a82cd8e8dfb76d6d0c69771/1/1/111_636419.jpg" alt="" class="w-48 max-w-full" />
             </div>
-            <div class="flex flex-col sm:text-center">
-              <p class="text-lg font-bold text-blue-900">Lennert Meißner</p>
-              <p class="mb-5 text-xs text-gray-800">Development</p>
+  
+            <h3 class="text-base font-semibold uppercase">AKKU-KETTENSÄGE MSA 60 - AK-SYSTEM</h3>
+            <p class="mt-3 text-sm text-slate-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit...</p>
+            <div class="mt-4 flex items-center justify-between text-xs text-slate-500">
+              <div class="flex items-center">
+                <div class="mr-2 h-2 w-2 rounded-full bg-green-600"></div>
+                <span>Auf Lager</span>
+              </div>
+              <div class="flex items-center">
+                <div class="ml-2 mr-2 h-2 w-2 rounded-full bg-green-600"></div>
+                <span>Lieferbar</span>
+              </div>
+            </div>
+            <div class="mt-4 flex justify-between">
+              <span class="font-bold">Ab <span class="text-blue-500">339,00€</span><span class="ml-2 text-xs font-normal text-gray-500">statt 339,00€</span></span>
+  
+              <div class="flex w-6 items-center justify-center rounded-full bg-blue-600 text-white hover:cursor-pointer hover:bg-blue-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- Shopping Card -->
+        <a href="">
+          <div class="h-fit rounded-2xl border bg-white p-2 shadow-xl hover:shadow-blue-200">
+            <div class="flex items-center justify-center">
+              <img src="https://www.schweisshelden.de/media/catalog/product/cache/26b8e7d72a82cd8e8dfb76d6d0c69771/1/1/111_636419.jpg" alt="" class="w-48 max-w-full" />
+            </div>
+  
+            <h3 class="text-base font-semibold uppercase">AKKU-KETTENSÄGE MSA 60 - AK-SYSTEM</h3>
+            <p class="mt-3 text-sm text-slate-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit...</p>
+            <div class="mt-4 flex items-center justify-between text-xs text-slate-500">
+              <div class="flex items-center">
+                <div class="mr-2 h-2 w-2 rounded-full bg-green-600"></div>
+                <span>Auf Lager</span>
+              </div>
+              <div class="flex items-center">
+                <div class="ml-2 mr-2 h-2 w-2 rounded-full bg-green-600"></div>
+                <span>Lieferbar</span>
+              </div>
+            </div>
+            <div class="mt-4 flex justify-between">
+              <span class="font-bold">Ab <span class="text-blue-500">339,00€</span><span class="ml-2 text-xs font-normal text-gray-500">statt 339,00€</span></span>
+  
+              <div class="flex w-6 items-center justify-center rounded-full bg-blue-600 text-white hover:cursor-pointer hover:bg-blue-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        </div>
+      </div>
+    </section>
+    <!-- Kontakt -->
+    <section class="relative z-10 overflow-hidden bg-white py-20 lg:py-[120px] px-2">
+      <div class="container max-w-6xl mx-auto">
+        <div class="flex flex-wrap -mx-4 lg:justify-between">
+          <div class="w-full px-4 lg:w-1/2 xl:w-6/12">
+            <div class="mb-12 max-w-[570px] lg:mb-0">
+              <span class="inline-block mb-4 text-xs font-semibold tracking-wider text-blue-500 uppercase rounded-full">
+                Kontakt Form
+              </span>
+              <h2
+                class="text-dark mb-6 text-[32px] font-bold sm:text-[40px] lg:text-[36px] xl:text-[40px]">
+                Kontaktiere uns
+              </h2>
+              <p class="text-base leading-relaxed text-body-color mb-9">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eius tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                adiqua minim veniam quis nostrud exercitation ullamco
+              </p>
+              <a href="https://maps.app.goo.gl/Fpnci7DEvHRaorJZ8" class="mb-8 flex w-full max-w-[370px]">
+                <div
+                  class="bg-blue-500/5 text-blue-500 hover:scale-110 mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded-xl sm:h-[70px] sm:max-w-[70px]">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M30.6 11.8002L17.7 3.5002C16.65 2.8502 15.3 2.8502 14.3 3.5002L1.39998 11.8002C0.899983 12.1502 0.749983 12.8502 1.04998 13.3502C1.39998 13.8502 2.09998 14.0002 2.59998 13.7002L3.44998 13.1502V25.8002C3.44998 27.5502 4.84998 28.9502 6.59998 28.9502H25.4C27.15 28.9502 28.55 27.5502 28.55 25.8002V13.1502L29.4 13.7002C29.6 13.8002 29.8 13.9002 30 13.9002C30.35 13.9002 30.75 13.7002 30.95 13.4002C31.3 12.8502 31.15 12.1502 30.6 11.8002ZM13.35 26.7502V18.5002C13.35 18.0002 13.75 17.6002 14.25 17.6002H17.75C18.25 17.6002 18.65 18.0002 18.65 18.5002V26.7502H13.35ZM26.3 25.8002C26.3 26.3002 25.9 26.7002 25.4 26.7002H20.9V18.5002C20.9 16.8002 19.5 15.4002 17.8 15.4002H14.3C12.6 15.4002 11.2 16.8002 11.2 18.5002V26.7502H6.69998C6.19998 26.7502 5.79998 26.3502 5.79998 25.8502V11.7002L15.5 5.4002C15.8 5.2002 16.2 5.2002 16.5 5.4002L26.3 11.7002V25.8002Z"
+                      fill="currentColor" />
+                  </svg>
+                </div>
+                <div class="w-full">
+                  <h4 class="mb-1 text-xl font-bold text-dark">
+                    Wo finden Sie uns?
+                  </h4>
+                  <p class="text-base text-body-color">
+                    Bahnhofsallee 38, 23909 Ratzeburg
+                  </p>
+                </div>
+              </a>
+              <a href="#" class="mb-8 flex w-full max-w-[370px]">
+                <div
+                  class="bg-blue-500/5 text-blue-500 hover:scale-110 mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded-xl sm:h-[70px] sm:max-w-[70px]">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_941_17577)">
+                      <path
+                        d="M24.3 31.1499C22.95 31.1499 21.4 30.7999 19.7 30.1499C16.3 28.7999 12.55 26.1999 9.19997 22.8499C5.84997 19.4999 3.24997 15.7499 1.89997 12.2999C0.39997 8.59994 0.54997 5.54994 2.29997 3.84994C2.34997 3.79994 2.44997 3.74994 2.49997 3.69994L6.69997 1.19994C7.74997 0.599942 9.09997 0.899942 9.79997 1.89994L12.75 6.29994C13.45 7.34994 13.15 8.74994 12.15 9.44994L10.35 10.6999C11.65 12.7999 15.35 17.9499 21.25 21.6499L22.35 20.0499C23.2 18.8499 24.55 18.4999 25.65 19.2499L30.05 22.1999C31.05 22.8999 31.35 24.2499 30.75 25.2999L28.25 29.4999C28.2 29.5999 28.15 29.6499 28.1 29.6999C27.2 30.6499 25.9 31.1499 24.3 31.1499ZM3.79997 5.54994C2.84997 6.59994 2.89997 8.74994 3.99997 11.4999C5.24997 14.6499 7.64997 18.0999 10.8 21.2499C13.9 24.3499 17.4 26.7499 20.5 27.9999C23.2 29.0999 25.35 29.1499 26.45 28.1999L28.85 24.0999C28.85 24.0499 28.85 24.0499 28.85 23.9999L24.45 21.0499C24.45 21.0499 24.35 21.0999 24.25 21.2499L23.15 22.8499C22.45 23.8499 21.1 24.1499 20.1 23.4999C13.8 19.5999 9.89997 14.1499 8.49997 11.9499C7.84997 10.8999 8.09997 9.54994 9.09997 8.84994L10.9 7.59994V7.54994L7.94997 3.14994C7.94997 3.09994 7.89997 3.09994 7.84997 3.14994L3.79997 5.54994Z"
+                        fill="currentColor" />
+                      <path
+                        d="M29.3 14.25C28.7 14.25 28.25 13.8 28.2 13.2C27.8 8.15003 23.65 4.10003 18.55 3.75003C17.95 3.70003 17.45 3.20003 17.5 2.55003C17.55 1.95003 18.05 1.45003 18.7 1.50003C24.9 1.90003 29.95 6.80003 30.45 13C30.5 13.6 30.05 14.15 29.4 14.2C29.4 14.25 29.35 14.25 29.3 14.25Z"
+                        fill="currentColor" />
+                      <path
+                        d="M24.35 14.7002C23.8 14.7002 23.3 14.3002 23.25 13.7002C22.95 11.0002 20.85 8.90018 18.15 8.55018C17.55 8.50018 17.1 7.90018 17.15 7.30018C17.2 6.70018 17.8 6.25018 18.4 6.30018C22.15 6.75018 25.05 9.65018 25.5 13.4002C25.55 14.0002 25.15 14.5502 24.5 14.6502C24.4 14.7002 24.35 14.7002 24.35 14.7002Z"
+                        fill="currentColor" />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_941_17577">
+                        <rect width="32" height="32" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+                <div class="w-full">
+                  <h4 class="mb-1 text-xl font-bold text-dark">
+                    Telefonnummer
+                  </h4>
+                  <p class="text-base text-body-color">
+                    +49 4541 82129
+                  </p>
+                </div>
+              </a>
+              <a href="#" class="mb-8 flex w-full max-w-[370px]">
+                <div
+                  class="bg-blue-500/5 text-blue-500 hover:scale-110 mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded-xl sm:h-[70px] sm:max-w-[70px]">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M28 4.7998H3.99998C2.29998 4.7998 0.849976 6.1998 0.849976 7.9498V24.1498C0.849976 25.8498 2.24998 27.2998 3.99998 27.2998H28C29.7 27.2998 31.15 25.8998 31.15 24.1498V7.8998C31.15 6.1998 29.7 4.7998 28 4.7998ZM28 7.0498C28.05 7.0498 28.1 7.0498 28.15 7.0498L16 14.8498L3.84998 7.0498C3.89998 7.0498 3.94998 7.0498 3.99998 7.0498H28ZM28 24.9498H3.99998C3.49998 24.9498 3.09998 24.5498 3.09998 24.0498V9.2498L14.8 16.7498C15.15 16.9998 15.55 17.0998 15.95 17.0998C16.35 17.0998 16.75 16.9998 17.1 16.7498L28.8 9.2498V24.0998C28.9 24.5998 28.5 24.9498 28 24.9498Z"
+                      fill="currentColor" />
+                  </svg>
+                </div>
+                <div class="w-full">
+                  <h4 class="mb-1 text-xl font-bold text-dark ">
+                    Email Addresse
+                  </h4>
+                  <p class="text-base text-body-color ">
+                    wuk-schweisstechnik@t-online.de
+                  </p>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="w-full px-4 lg:w-1/2 xl:w-5/12">
+            <div class="relative p-8 bg-slate-100 rounded-xl shadow-xl sm:p-12">
+              <form>
+                <div class="mb-6">
+                  <input type="text" placeholder="Dein Name" required
+                    class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full rounded-xl border py-3 px-[14px] text-base outline-none" />
+                </div>
+                <div class="mb-6">
+                  <input type="email" placeholder="Deine Email" required
+                    class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full rounded-xl border py-3 px-[14px] text-base outline-none" />
+                </div>
+                <div class="mb-6">
+                  <input type="text" placeholder="Deine Telefonnummer"
+                    class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full rounded-xl border py-3 px-[14px] text-base outline-none" />
+                </div>
+                <div class="mb-6">
+                  <textarea rows="6" placeholder="Deine Nachricht an uns" required
+                    class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full resize-none rounded-xl border py-3 px-[14px] text-base outline-none"></textarea>
+                </div>
+                <div>
+                  <button type="submit"
+                    class="w-full p-3 text-white transition border rounded-xl border-blue-500 bg-blue-500 hover:bg-opacity-90">
+                    Nachricht senden
+                  </button>
+                </div>
+              </form>
+              <div>
+                <span class="absolute -left-7 -bottom-7 z-[-1]">
+                  <svg width="107" height="134" viewBox="0 0 107 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="104.999" cy="132" r="1.66667" transform="rotate(180 104.999 132)" fill="#13C296" />
+                    <circle cx="104.999" cy="117.333" r="1.66667" transform="rotate(180 104.999 117.333)"
+                      fill="#13C296" />
+                    <circle cx="104.999" cy="102.667" r="1.66667" transform="rotate(180 104.999 102.667)"
+                      fill="#13C296" />
+                    <circle cx="104.999" cy="88" r="1.66667" transform="rotate(180 104.999 88)" fill="#13C296" />
+                    <circle cx="104.999" cy="73.3333" r="1.66667" transform="rotate(180 104.999 73.3333)"
+                      fill="#13C296" />
+                    <circle cx="104.999" cy="45" r="1.66667" transform="rotate(180 104.999 45)" fill="#13C296" />
+                    <circle cx="104.999" cy="16" r="1.66667" transform="rotate(180 104.999 16)" fill="#13C296" />
+                    <circle cx="104.999" cy="59" r="1.66667" transform="rotate(180 104.999 59)" fill="#13C296" />
+                    <circle cx="104.999" cy="30.6666" r="1.66667" transform="rotate(180 104.999 30.6666)"
+                      fill="#13C296" />
+                    <circle cx="104.999" cy="1.66665" r="1.66667" transform="rotate(180 104.999 1.66665)"
+                      fill="#13C296" />
+                    <circle cx="90.3333" cy="132" r="1.66667" transform="rotate(180 90.3333 132)" fill="#13C296" />
+                    <circle cx="90.3333" cy="117.333" r="1.66667" transform="rotate(180 90.3333 117.333)"
+                      fill="#13C296" />
+                    <circle cx="90.3333" cy="102.667" r="1.66667" transform="rotate(180 90.3333 102.667)"
+                      fill="#13C296" />
+                    <circle cx="90.3333" cy="88" r="1.66667" transform="rotate(180 90.3333 88)" fill="#13C296" />
+                    <circle cx="90.3333" cy="73.3333" r="1.66667" transform="rotate(180 90.3333 73.3333)"
+                      fill="#13C296" />
+                    <circle cx="90.3333" cy="45" r="1.66667" transform="rotate(180 90.3333 45)" fill="#13C296" />
+                    <circle cx="90.3333" cy="16" r="1.66667" transform="rotate(180 90.3333 16)" fill="#13C296" />
+                    <circle cx="90.3333" cy="59" r="1.66667" transform="rotate(180 90.3333 59)" fill="#13C296" />
+                    <circle cx="90.3333" cy="30.6666" r="1.66667" transform="rotate(180 90.3333 30.6666)"
+                      fill="#13C296" />
+                    <circle cx="90.3333" cy="1.66665" r="1.66667" transform="rotate(180 90.3333 1.66665)"
+                      fill="#13C296" />
+                    <circle cx="75.6654" cy="132" r="1.66667" transform="rotate(180 75.6654 132)" fill="#13C296" />
+                    <circle cx="31.9993" cy="132" r="1.66667" transform="rotate(180 31.9993 132)" fill="#13C296" />
+                    <circle cx="75.6654" cy="117.333" r="1.66667" transform="rotate(180 75.6654 117.333)"
+                      fill="#13C296" />
+                    <circle cx="31.9993" cy="117.333" r="1.66667" transform="rotate(180 31.9993 117.333)"
+                      fill="#13C296" />
+                    <circle cx="75.6654" cy="102.667" r="1.66667" transform="rotate(180 75.6654 102.667)"
+                      fill="#13C296" />
+                    <circle cx="31.9993" cy="102.667" r="1.66667" transform="rotate(180 31.9993 102.667)"
+                      fill="#13C296" />
+                    <circle cx="75.6654" cy="88" r="1.66667" transform="rotate(180 75.6654 88)" fill="#13C296" />
+                    <circle cx="31.9993" cy="88" r="1.66667" transform="rotate(180 31.9993 88)" fill="#13C296" />
+                    <circle cx="75.6654" cy="73.3333" r="1.66667" transform="rotate(180 75.6654 73.3333)"
+                      fill="#13C296" />
+                    <circle cx="31.9993" cy="73.3333" r="1.66667" transform="rotate(180 31.9993 73.3333)"
+                      fill="#13C296" />
+                    <circle cx="75.6654" cy="45" r="1.66667" transform="rotate(180 75.6654 45)" fill="#13C296" />
+                    <circle cx="31.9993" cy="45" r="1.66667" transform="rotate(180 31.9993 45)" fill="#13C296" />
+                    <circle cx="75.6654" cy="16" r="1.66667" transform="rotate(180 75.6654 16)" fill="#13C296" />
+                    <circle cx="31.9993" cy="16" r="1.66667" transform="rotate(180 31.9993 16)" fill="#13C296" />
+                    <circle cx="75.6654" cy="59" r="1.66667" transform="rotate(180 75.6654 59)" fill="#13C296" />
+                    <circle cx="31.9993" cy="59" r="1.66667" transform="rotate(180 31.9993 59)" fill="#13C296" />
+                    <circle cx="75.6654" cy="30.6666" r="1.66667" transform="rotate(180 75.6654 30.6666)"
+                      fill="#13C296" />
+                    <circle cx="31.9993" cy="30.6666" r="1.66667" transform="rotate(180 31.9993 30.6666)"
+                      fill="#13C296" />
+                    <circle cx="75.6654" cy="1.66665" r="1.66667" transform="rotate(180 75.6654 1.66665)"
+                      fill="#13C296" />
+                    <circle cx="31.9993" cy="1.66665" r="1.66667" transform="rotate(180 31.9993 1.66665)"
+                      fill="#13C296" />
+                    <circle cx="60.9993" cy="132" r="1.66667" transform="rotate(180 60.9993 132)" fill="#13C296" />
+                    <circle cx="17.3333" cy="132" r="1.66667" transform="rotate(180 17.3333 132)" fill="#13C296" />
+                    <circle cx="60.9993" cy="117.333" r="1.66667" transform="rotate(180 60.9993 117.333)"
+                      fill="#13C296" />
+                    <circle cx="17.3333" cy="117.333" r="1.66667" transform="rotate(180 17.3333 117.333)"
+                      fill="#13C296" />
+                    <circle cx="60.9993" cy="102.667" r="1.66667" transform="rotate(180 60.9993 102.667)"
+                      fill="#13C296" />
+                    <circle cx="17.3333" cy="102.667" r="1.66667" transform="rotate(180 17.3333 102.667)"
+                      fill="#13C296" />
+                    <circle cx="60.9993" cy="88" r="1.66667" transform="rotate(180 60.9993 88)" fill="#13C296" />
+                    <circle cx="17.3333" cy="88" r="1.66667" transform="rotate(180 17.3333 88)" fill="#13C296" />
+                    <circle cx="60.9993" cy="73.3333" r="1.66667" transform="rotate(180 60.9993 73.3333)"
+                      fill="#13C296" />
+                    <circle cx="17.3333" cy="73.3333" r="1.66667" transform="rotate(180 17.3333 73.3333)"
+                      fill="#13C296" />
+                    <circle cx="60.9993" cy="45" r="1.66667" transform="rotate(180 60.9993 45)" fill="#13C296" />
+                    <circle cx="17.3333" cy="45" r="1.66667" transform="rotate(180 17.3333 45)" fill="#13C296" />
+                    <circle cx="60.9993" cy="16" r="1.66667" transform="rotate(180 60.9993 16)" fill="#13C296" />
+                    <circle cx="17.3333" cy="16" r="1.66667" transform="rotate(180 17.3333 16)" fill="#13C296" />
+                    <circle cx="60.9993" cy="59" r="1.66667" transform="rotate(180 60.9993 59)" fill="#13C296" />
+                    <circle cx="17.3333" cy="59" r="1.66667" transform="rotate(180 17.3333 59)" fill="#13C296" />
+                    <circle cx="60.9993" cy="30.6666" r="1.66667" transform="rotate(180 60.9993 30.6666)"
+                      fill="#13C296" />
+                    <circle cx="17.3333" cy="30.6666" r="1.66667" transform="rotate(180 17.3333 30.6666)"
+                      fill="#13C296" />
+                    <circle cx="60.9993" cy="1.66665" r="1.66667" transform="rotate(180 60.9993 1.66665)"
+                      fill="#13C296" />
+                    <circle cx="17.3333" cy="1.66665" r="1.66667" transform="rotate(180 17.3333 1.66665)"
+                      fill="#13C296" />
+                    <circle cx="46.3333" cy="132" r="1.66667" transform="rotate(180 46.3333 132)" fill="#13C296" />
+                    <circle cx="2.66536" cy="132" r="1.66667" transform="rotate(180 2.66536 132)" fill="#13C296" />
+                    <circle cx="46.3333" cy="117.333" r="1.66667" transform="rotate(180 46.3333 117.333)"
+                      fill="#13C296" />
+                    <circle cx="2.66536" cy="117.333" r="1.66667" transform="rotate(180 2.66536 117.333)"
+                      fill="#13C296" />
+                    <circle cx="46.3333" cy="102.667" r="1.66667" transform="rotate(180 46.3333 102.667)"
+                      fill="#13C296" />
+                    <circle cx="2.66536" cy="102.667" r="1.66667" transform="rotate(180 2.66536 102.667)"
+                      fill="#13C296" />
+                    <circle cx="46.3333" cy="88" r="1.66667" transform="rotate(180 46.3333 88)" fill="#13C296" />
+                    <circle cx="2.66536" cy="88" r="1.66667" transform="rotate(180 2.66536 88)" fill="#13C296" />
+                    <circle cx="46.3333" cy="73.3333" r="1.66667" transform="rotate(180 46.3333 73.3333)"
+                      fill="#13C296" />
+                    <circle cx="2.66536" cy="73.3333" r="1.66667" transform="rotate(180 2.66536 73.3333)"
+                      fill="#13C296" />
+                    <circle cx="46.3333" cy="45" r="1.66667" transform="rotate(180 46.3333 45)" fill="#13C296" />
+                    <circle cx="2.66536" cy="45" r="1.66667" transform="rotate(180 2.66536 45)" fill="#13C296" />
+                    <circle cx="46.3333" cy="16" r="1.66667" transform="rotate(180 46.3333 16)" fill="#13C296" />
+                    <circle cx="2.66536" cy="16" r="1.66667" transform="rotate(180 2.66536 16)" fill="#13C296" />
+                    <circle cx="46.3333" cy="59" r="1.66667" transform="rotate(180 46.3333 59)" fill="#13C296" />
+                    <circle cx="2.66536" cy="59" r="1.66667" transform="rotate(180 2.66536 59)" fill="#13C296" />
+                    <circle cx="46.3333" cy="30.6666" r="1.66667" transform="rotate(180 46.3333 30.6666)"
+                      fill="#13C296" />
+                    <circle cx="2.66536" cy="30.6666" r="1.66667" transform="rotate(180 2.66536 30.6666)"
+                      fill="#13C296" />
+                    <circle cx="46.3333" cy="1.66665" r="1.66667" transform="rotate(180 46.3333 1.66665)"
+                      fill="#13C296" />
+                    <circle cx="2.66536" cy="1.66665" r="1.66667" transform="rotate(180 2.66536 1.66665)"
+                      fill="#13C296" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full grid grid-cols-1 lg:grid-cols-3 mt-28">
+        <div class="flex justify-center col-span-1 lg:col-span-2 items-center">
+          <div id="map" class="w-full max-w-4xl rounded-2xl" style="height: 30rem;"></div>
+        </div>
+        <div class="flex justify-center items-center">
+          <div>
+            <div class="bg-blue-600 rounded-t-2xl text-center min-w-72 px-5 py-3 text-white">
+              <p class="font-bold text-2xl">Unsere Öffnungszeiten</p>
+              <p class="text-lg">Besuche uns heute</p>
+            </div>
+            <div class="bg-white rounded-b-2xl border-b border-s border-e">
+              <div class="flex justify-between px-3 py-2  text-xl">
+                <span class="font-semibold text-blue-500">Montag</span>
+                <span class="text-blue-500 font-semibold">08:00 <span>-</span> 16:00</span>
+              </div>
+              <div class="flex justify-between px-3 py-2 text-xl">
+                <span class="font-semibold  text-blue-500">Dienstag</span>
+                <span class="text-blue-500 font-semibold">08:00 <span>-</span> 16:00</span>
+              </div>
+              <div class="flex justify-between px-3 py-2  text-xl">
+                <span class="font-semibold  text-blue-500">Mittwoch</span>
+                <span class="text-blue-500 font-semibold">08:00 <span>-</span> 16:00</span>
+              </div>
+              <div class="flex justify-between px-3 py-2  text-xl">
+                <span class="font-semibold  text-blue-500">Donnerstag</span>
+                <span class="text-blue-500 font-semibold">08:00 <span>-</span> 16:00</span>
+              </div>
+              <div class="flex justify-between px-3 py-2  text-xl rounded-b-2xl">
+                <span class="font-semibold  text-blue-500">Freitag</span>
+                <span class="text-blue-500 font-semibold">08:00 <span>-</span> 16:00</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    {% endblock Team %}
-    <!--Team End-->
-
-
-
-    <!--U-Boot Beginn-->
-    {% block UBoot %}
-    <section class="h-72">
-      <div class="seaContainer">
-        <div class="submarine__container">
-          <div class="light"></div>
-          <div class="submarine__periscope"></div>
-          <div class="submarine__periscope-glass"></div>
-          <div class="submarine__sail">
-            <div class="submarine__sail-shadow dark1"></div>
-            <div class="submarine__sail-shadow light1"></div>
-            <div class="submarine__sail-shadow dark2"></div>
-          </div>
-          <div class="submarine__body">
-            <div class="submarine__window one"></div>
-            <div class="submarine__window two"></div>
-            <div class="submarine__shadow-dark"></div>
-            <div class="submarine__shadow-light"></div>
-            <div class="submarine__shadow-arcLight"></div>
-          </div>
-          <div class="submarine__propeller">
-            <div class="propeller__perspective">
-              <div class="submarine__propeller-parts darkOne"></div>
-              <div class="submarine__propeller-parts lightOne"></div>
-            </div>
-          </div>
-        </div>
-        <div class="bubbles__container">
-          <span class="bubbles bubble-1"></span>
-          <span class="bubbles bubble-2"></span>
-          <span class="bubbles bubble-3"></span>
-          <span class="bubbles bubble-4"></span>
-        </div>
-        <div class="ground__container">
-          <div class="ground ground1">
-            <span class="up-1"></span>
-            <span class="up-2"></span>
-            <span class="up-3"></span>
-            <span class="up-4"></span>
-            <span class="up-5"></span>
-            <span class="up-6"></span>
-            <span class="up-7"></span>
-            <span class="up-8"></span>
-            <span class="up-9"></span>
-            <span class="up-10"></span>
-          </div>
-          <div class="ground ground2">
-            <span class="up-1"></span>
-            <span class="up-2"></span>
-            <span class="up-3"></span>
-            <span class="up-4"></span>
-            <span class="up-5"></span>
-            <span class="up-6"></span>
-            <span class="up-7"></span>
-            <span class="up-8"></span>
-            <span class="up-9"></span>
-            <span class="up-10"></span>
-            <span class="up-11"></span>
-            <span class="up-12"></span>
-            <span class="up-13"></span>
-            <span class="up-14"></span>
-            <span class="up-15"></span>
-            <span class="up-16"></span>
-            <span class="up-17"></span>
-            <span class="up-18"></span>
-            <span class="up-19"></span>
-            <span class="up-20"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-    {% endblock UBoot %}
-    <!--U-Boot End-->
-
+    <!-- ====== Contact Section End -->
   </div>
+  {% endblock Main %}
+  <!--Main End-->
+
+
 
   <!--FAQ Beginn-->
   {% block FAQ %}
-  <section itemscope itemtype="https://schema.org/FAQPage" class="bg-gray-700 text-white -mt-5">
+  <section itemscope itemtype="https://schema.org/FAQPage" class="bg-gray-700 text-white mt-12">
     <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
         <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
