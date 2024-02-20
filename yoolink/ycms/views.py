@@ -598,48 +598,53 @@ def site_view_main_hero(request):
     data = {}
     if TextContent.objects.filter(name="main_hero").exists():
         data["textContent"] = TextContent.objects.get(name='main_hero')
-    if Galerie.objects.filter(place='main_hero').exists():
-        data["heroImages"] = Galerie.objects.get(place='main_hero').images.all()
+    if fileentry.objects.filter(place='main_hero').exists():
+        data["heroImage"] = fileentry.objects.get(place='main_hero')
         
     return render(request, "pages/cms/content/sites/mainsite/HeroContent.html", data)
 
 @login_required(login_url='login')
-def site_view_main_responsive(request):
+def site_view_main_dienstleistungen(request):
     data = {}
-    if TextContent.objects.filter(name="main_responsive").exists():
-        data["textContent"] = TextContent.objects.get(name='main_responsive')
+    if TextContent.objects.filter(name="main_dienstleistungen").exists():
+        data["textContent"] = TextContent.objects.get(name='main_dienstleistungen')
 
-    if Galerie.objects.filter(place='main_responsive_desktop').exists():
-        data['responsiveDesktopImages'] = Galerie.objects.get(place='main_responsive_desktop').images.all()
+    if TextContent.objects.filter(name="main_dienst_1").exists():
+        data["dienst1Text"] = TextContent.objects.get(name='main_dienst_1')
         
-    if Galerie.objects.filter(place='main_responsive_handy').exists():
-        data['responsiveHandyImages'] = Galerie.objects.get(place='main_responsive_handy').images.all()
-
-    return render(request, "pages/cms/content/sites/mainsite/ResponsiveContent.html", data)
-
-@login_required(login_url='login')
-def site_view_main_cms(request):
-    data = {}
-    if TextContent.objects.filter(name="main_cms").exists():
-        data["textContent"] = TextContent.objects.get(name='main_cms')
-    if fileentry.objects.filter(place='main_cms').exists():
-        data["cmsImage"] = fileentry.objects.get(place='main_cms')
-    return render(request, "pages/cms/content/sites/mainsite/CmsContent.html", data)
+    if TextContent.objects.filter(name="main_dienst_2").exists():
+        data["dienst2Text"] = TextContent.objects.get(name='main_dienst_2')
+        
+    if TextContent.objects.filter(name="main_dienst_3").exists():
+        data["dienst3Text"] = TextContent.objects.get(name='main_dienst_3')
+        
+    if TextContent.objects.filter(name="main_dienst_4").exists():
+        data["dienst4Text"] = TextContent.objects.get(name='main_dienst_4')
+    
+    return render(request, "pages/cms/content/sites/mainsite/DienstleistungenContent.html", data)
 
 @login_required(login_url='login')
-def site_view_main_price(request):
+def site_view_main_angebote(request):
     data = {}
-    if TextContent.objects.filter(name="main_price").exists():
-        data["textContent"] = TextContent.objects.get(name='main_price')
-    return render(request, "pages/cms/content/sites/mainsite/PriceContent.html", data)
+    if TextContent.objects.filter(name="main_angebote").exists():
+        data["textContent"] = TextContent.objects.get(name='main_angebote')
+    return render(request, "pages/cms/content/sites/mainsite/AngeboteContent.html", data)
 
 @login_required(login_url='login')
-def site_view_main_team(request):
+def site_view_main_flow(request):
     data = {}
-    if TextContent.objects.filter(name="main_team").exists():
-        data["textContent"] = TextContent.objects.get(name='main_team')
+    if TextContent.objects.filter(name="main_flow1").exists():
+        data["textContent1"] = TextContent.objects.get(name='main_flow1')
+    if fileentry.objects.filter(place='main_flow').exists():
+        data["flowImage"] = fileentry.objects.get(place='main_flow')
+    return render(request, "pages/cms/content/sites/mainsite/FlowContent.html", data)
 
-    return render(request, "pages/cms/content/sites/mainsite/TeamContent.html", data)
+@login_required(login_url='login')
+def site_view_main_contact(request):
+    data = {}
+    if TextContent.objects.filter(name="main_contact").exists():
+        data["textContent"] = TextContent.objects.get(name='main_contact')
+    return render(request, "pages/cms/content/sites/mainsite/KontaktContent.html", data)
 
 
 @login_required(login_url='login')
@@ -1419,7 +1424,7 @@ def verify_cart(request):
     token = str(order.uuid)
     verification_url = request.scheme + '://' + request.get_host() + reverse('cms:order-verify') + f'?token={token}&order_id={order_id}'
     # Send confirmation email with verification link
-    user_settings = UserSettings.objects.filter(user__is_staff=True).first()
+    user_settings = UserSettings.objects.filter(user__is_staff=False).first()
     full_name = user_settings.full_name
     company_name = user_settings.company_name
     phone_number = user_settings.tel_number
@@ -1509,7 +1514,7 @@ def verify_order(request):
 
     # Check if the order exists
     order = get_object_or_404(Order, id=orderId, uuid=uuid)
-    user_settings = UserSettings.objects.filter(user__is_staff=True).first()
+    user_settings = UserSettings.objects.filter(user__is_staff=False).first()
     if not user_settings:
         return JsonResponse({'error': 'There is no staff user!'}, status=400)
     # Check if the order is not already verified
@@ -1644,7 +1649,7 @@ def email_send(request):
     message_company += f"Nachricht: { message }\n\n"
     message_company += f"Bitte schauen Sie im Dashboard nach, um weitere Details zu erhalten: {dashboard_url}cms/messages/{message.id}\n\n"
     message_company += "Vielen Dank!\n\nMit freundlichen Grüßen,\nIhr YooLink"
-    user_settings = UserSettings.objects.filter(user__is_staff=True).first()
+    user_settings = UserSettings.objects.filter(user__is_staff=False).first()
     # Replace 'your_company_email' with the actual email address of your company
     send_mail(
         subject_company,

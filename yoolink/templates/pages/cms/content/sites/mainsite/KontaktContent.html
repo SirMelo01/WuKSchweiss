@@ -13,7 +13,7 @@
         <div>
             {% csrf_token %}
             <a class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-6 hover:cursor-pointer"
-                id="saveTextData" name="main_team">
+                id="saveTextData" name="main_contact">
                 Speichern
             </a>
         </div>
@@ -33,25 +33,7 @@
                 </textarea>
             </div>
         </div>
-        <div class="grid gap-10 mx-auto sm:grid-cols-2 lg:max-w-screen-md">
-            <div>
-              <div class="relative pb-56 mb-4 rounded shadow lg:pb-64">
-                <img class="absolute object-cover w-full h-full rounded-xl" src="{% static 'images/Sebastian.jpeg' %}" alt="Sebastian Rauch"/>
-              </div>
-              <div class="flex flex-col sm:text-center">
-                <p class="text-lg font-bold text-blue-900">Sebastian Rauch</p>
-                <p class="mb-5 text-xs text-gray-800">Product Manager</p>
-              </div>
-            </div>
-              <div class="relative pb-56 mb-4 rounded shadow lg:pb-64">
-                <img class="absolute object-cover w-full h-full rounded-xl" src="{% static 'images/Lennert.jpg' %}" alt="Lennert Meißner"/>
-              </div>
-              <div class="flex flex-col sm:text-center">
-                <p class="text-lg font-bold text-blue-900">Lennert Meißner</p>
-                <p class="mb-5 text-xs text-gray-800">Development</p>
-              </div>
-            </div>
-          </div>
+        
     </div>
 
 

@@ -22,7 +22,7 @@ sitemaps = {
 urlpatterns = [
     path("", view=load_index, name="home"),
     path("products/", view=shop, name="products"),
-    path("products/<int:product_id>/", view=detail, name="product-detail"),
+    path("products/<int:product_id>/", view=detail, name="product_detail"),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # Your stuff: custom urls includes go here

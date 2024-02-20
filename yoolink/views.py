@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from yoolink.ycms.models import FAQ, Message, Product, TextContent, fileentry, Galerie, GaleryImage
+from yoolink.ycms.models import FAQ, UserSettings, Message, Product, TextContent, fileentry, Galerie, GaleryImage
 import datetime
 from django.http import HttpResponseRedirect
 
@@ -10,36 +10,52 @@ def load_index(request):
     context = {
         'FAQ': faq,
     }
+    
+    reduced_products = Product.objects.filter(is_reduced=True)
+    if reduced_products.exists():
+        products = reduced_products[:3]
+    else:
+        products = Product.objects.all()[:3]
 
-    # Text Contents
+    context["products"] = products
+
+    # Hero
     if TextContent.objects.filter(name="main_hero").exists():
         context["heroText"] = TextContent.objects.get(name='main_hero')
 
-    if TextContent.objects.filter(name="main_responsive").exists():
-        context["responsiveText"] = TextContent.objects.get(name='main_responsive')
+    # Dienstleistungen        
+    if TextContent.objects.filter(name="main_dienstleistungen").exists():
+        context["dienstText"] = TextContent.objects.get(name='main_dienstleistungen')
 
-    if TextContent.objects.filter(name="main_cms").exists():
-        context["cmsText"] = TextContent.objects.get(name='main_cms')
-
-    if TextContent.objects.filter(name="main_price").exists():
-        context["priceText"] = TextContent.objects.get(name='main_price')
-
-    if TextContent.objects.filter(name="main_team").exists():
-        context["teamText"] = TextContent.objects.get(name='main_team')
-
-    # Galery
-    if Galerie.objects.filter(place='main_hero').exists():
-        context["heroImages"] = Galerie.objects.get(place='main_hero').images.all()
+    if TextContent.objects.filter(name="main_dienst_1").exists():
+        context["dienst1Text"] = TextContent.objects.get(name='main_dienst_1')
         
-    if Galerie.objects.filter(place='main_responsive_desktop').exists():
-        context['responsiveDesktopImages'] = Galerie.objects.get(place='main_responsive_desktop').images.all()
+    if TextContent.objects.filter(name="main_dienst_2").exists():
+        context["dienst2Text"] = TextContent.objects.get(name='main_dienst_2')
         
-    if Galerie.objects.filter(place='main_responsive_handy').exists():
-        context['responsiveHandyImages'] = Galerie.objects.get(place='main_responsive_handy').images.all()
-
+    if TextContent.objects.filter(name="main_dienst_3").exists():
+        context["dienst3Text"] = TextContent.objects.get(name='main_dienst_3')
+        
+    if TextContent.objects.filter(name="main_dienst_4").exists():
+        context["dienst4Text"] = TextContent.objects.get(name='main_dienst_4')
+        
+    # Angebote
+    if TextContent.objects.filter(name="main_angebote").exists():
+        context["angeboteText"] = TextContent.objects.get(name='main_angebote')
+        
+    # Angebote
+    if TextContent.objects.filter(name="main_contact").exists():
+        context["contactText"] = TextContent.objects.get(name='main_contact')
+    
     # Images
-    if fileentry.objects.filter(place='main_cms').exists():
-        context["cmsImage"] = fileentry.objects.get(place='main_cms')
+    if fileentry.objects.filter(place='main_hero').exists():
+        context["heroImage"] = fileentry.objects.get(place='main_hero')
+        
+    if fileentry.objects.filter(place='main_flow').exists():
+        context["flowImage"] = fileentry.objects.get(place='main_flow')
+
+    context["user_settings"] = UserSettings.objects.filter(user__is_staff=False).first()
+
 
     return render(request, 'pages/index.html', context=context)
 
