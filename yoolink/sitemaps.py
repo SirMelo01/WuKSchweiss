@@ -32,7 +32,7 @@ class BlogSitemap(Sitemap):
 class ProductSitemap(Sitemap):
      changefreq = "weekly"
      def items(self):
-          return Product.objects.filter(active=True)
+          return Product.objects.filter(is_active=True)
      
      def lastmod(self, obj):
           return obj.last_updated
