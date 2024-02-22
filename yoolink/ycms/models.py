@@ -187,6 +187,9 @@ class Product(models.Model):
         # Call the parent class's save method to actually save the model
         super(Product, self).save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse("product-detail", kwargs={"pk": self.pk, "slug_title": self.slug})
+
 class ShippingAddress(models.Model):
     prename = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
