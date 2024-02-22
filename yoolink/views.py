@@ -25,11 +25,11 @@ def load_index(request):
         'FAQ': faq,
     }
     
-    reduced_products = Product.objects.filter(is_reduced=True)
+    reduced_products = Product.objects.filter(is_reduced=True, is_active=True)
     if reduced_products.exists():
         products = reduced_products[:3]
     else:
-        products = Product.objects.all()[:3]
+        products = Product.objects.filter(is_active=True)[:3]
 
     context["products"] = products
 
