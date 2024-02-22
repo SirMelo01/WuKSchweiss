@@ -33,7 +33,7 @@
           aliquid temporibus beatae quidem voluptas neque adipisci ullam doloremque exercitationem rem eius architecto
           necessitatibus fuga?{% endif %}
           </p>
-          <div>
+          <div class="flex justify-center md:block md:justify-normal">
             <button type="submit"
               class="w-1/3 p-3 text-white transition border rounded-xl border-blue-500 bg-blue-500 hover:bg-opacity-90">
               {% if heroText %}{{heroText.buttonText}}{% else %}Kontakt{% endif %}
@@ -592,103 +592,17 @@
           </div>
         </div>
       </div>
-      <div class="w-full grid grid-cols-1 lg:grid-cols-3 mt-28">
-        <div class="flex justify-center col-span-1 lg:col-span-2 items-center">
-          <div id="map" class="w-full max-w-4xl rounded-2xl hidden" style="height: 30rem;"></div>
 
-          <div id="covermap" class="w-full max-w-4xl rounded-2xl hidden relative overflow-scroll">
-            <img class="h-full w-full object-cover brightness-75" src="{% static 'images/BlackandWhiteMap.png' %}" alt="Schwarzweiskarte" />
-              <div class="z-20 absolute w-full py-2.5 top-2.5 md:top-1/4 bottom-0.5 inset-x-0 text-white text-sm text-center leading-4 lg:text-lg md:text-base">
-                Inhalte von Leaflet werden aufgrund deiner aktuellen Cookie-Einstellungen nicht angezeigt.
-                Mehr dazu erfährst du in unserer
-              <a href="./datenschutz" class="hover:bg-slate-500 hover:text-white hover:rounded-sm transition ease-linear duration-300 text-blue-600">
-                Datenschutzerklärung
-              </a>. Du kannst deine Zustimmung jederzeit widerrufen. Gehe dazu einfach in deine eigenen
-            <a href="./cookies"
-              class="hover:bg-slate-500 hover:text-white hover:rounded-sm transition ease-linear duration-300 text-blue-600">
-              Cookie-Einstellungen</a>.
-          </div>
-
-          </div>
-        </div>
-        <div class="flex justify-center items-center">
-          <div>
-            <div class="bg-blue-600 rounded-t-2xl text-center min-w-72 px-5 py-3 text-white">
-              <p class="font-bold text-2xl">Unsere Öffnungszeiten</p>
-              <p class="text-lg">Besuche uns heute</p>
-            </div>
-            <div class="bg-white rounded-b-2xl border-b border-s border-e">
-              <div class="flex justify-between px-3 py-2  text-xl">
-                <span class="font-semibold text-blue-500">Montag</span>
-                <span class="text-blue-500 font-semibold">
-                  {% if opening_mon and opening_mon.is_open %}
-                  {{opening_mon.start_time}} <span>-</span> {{opening_mon.end_time}}
-                  {% else %}
-                  Geschlossen
-                  {% endif %}
-                </span>
-              </div>
-              <div class="flex justify-between px-3 py-2 text-xl">
-                <span class="font-semibold  text-blue-500">Dienstag</span>
-                <span class="text-blue-500 font-semibold">
-                  {% if opening_tue and opening_tue.is_open %}
-                  {{opening_tue.start_time}} <span>-</span> {{opening_tue.end_time}}
-                  {% else %}
-                  Geschlossen
-                  {% endif %}
-                </span>
-              </div>
-              <div class="flex justify-between px-3 py-2  text-xl">
-                <span class="font-semibold  text-blue-500">Mittwoch</span>
-                <span class="text-blue-500 font-semibold">
-                  {% if opening_wed and opening_wed.is_open %}
-                  {{opening_wed.start_time}} <span>-</span> {{opening_wed.end_time}}
-                  {% else %}
-                  Geschlossen
-                  {% endif %}
-                </span>
-              </div>
-              <div class="flex justify-between px-3 py-2  text-xl">
-                <span class="font-semibold  text-blue-500">Donnerstag</span>
-                <span class="text-blue-500 font-semibold">
-                  {% if opening_thu and opening_thu.is_open %}
-                  {{opening_thu.start_time}} <span>-</span> {{opening_thu.end_time}}
-                  {% else %}
-                  Geschlossen
-                  {% endif %}
-                </span>
-              </div>
-              <div class="flex justify-between px-3 py-2  text-xl rounded-b-2xl">
-                <span class="font-semibold  text-blue-500">Freitag</span>
-                <span class="text-blue-500 font-semibold">
-                  {% if opening_fri and opening_fri.is_open %}
-                  {{opening_fri.start_time}} <span>-</span> {{opening_fri.end_time}}
-                  {% else %}
-                  Geschlossen
-                  {% endif %}
-                </span>
-              </div>
-              <div class="flex justify-between px-3 py-2  text-xl rounded-b-2xl">
-                <span class="font-semibold  text-blue-500">Samstag</span>
-                <span class="text-blue-500 font-semibold">
-                  {% if opening_sat and opening_sat.is_open %}
-                  {{opening_sat.start_time}} <span>-</span> {{opening_sat.end_time}}
-                  {% else %}
-                  Geschlossen
-                  {% endif %}
-                </span>
-              </div>
-              <div class="flex justify-between px-3 py-2  text-xl rounded-b-2xl">
-                <span class="font-semibold  text-blue-500">Sonntag</span>
-                <span class="text-blue-500 font-semibold">
-                  {% if opening_sun and opening_sun.is_open %}
-                  {{opening_sun.start_time}} <span>-</span> {{opening_sun.end_time}}
-                  {% else %}
-                  Geschlossen
-                  {% endif %}
-                </span>
-              </div>
-            </div>
+      <div class="container mx-auto mt-16 max-w-6xl">
+        <div id="map" class="w-full rounded-2xl hidden h-80"></div>
+        <div id="covermap" class="w-full rounded-2xl hidden relative overflow-scroll h-80">
+          <img class="h-full w-full object-cover brightness-75" src="{% static 'images/BlackandWhiteMap.png' %}" alt="Schwarzweiskarte" />
+          <div class="z-20 absolute w-full py-2.5 top-2.5 md:top-1/4 bottom-0.5 inset-x-0 text-white text-sm text-center leading-4 lg:text-lg md:text-base">
+            Inhalte v on Leaflet werden aufgrund deiner aktuellen Cookie-Einstellungen nicht angezeigt. Mehr dazu erfährst du in unserer
+            <a href="./datenschutz" class="hover:bg-slate-500 hover:text-white hover:rounded-sm transition ease-linear duration-300 text-blue-600">
+              Datenschutzerklärung
+            </a>. Du kannst deine Zustimmung jederzeit widerrufen. Gehe dazu einfach in deine eigenen
+            <a href="./cookies" class="hover:bg-slate-500 hover:text-white hover:rounded-sm transition ease-linear duration-300 text-blue-600">Cookie-Einstellungen</a>.
           </div>
         </div>
       </div>
@@ -702,21 +616,21 @@
 
   <!--FAQ Beginn-->
   {% block FAQ %}
-  <section itemscope itemtype="https://schema.org/FAQPage" class="bg-gray-700 text-white mt-12">
+  <section itemscope itemtype="https://schema.org/FAQPage" class="bg-slate-100 text-gray-900 mt-12">
     <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
         <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
           <div>
-            <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-white uppercase rounded-full bg-teal-accent-400">
+            <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-blue-500 uppercase rounded-full">
               FAQ
             </p>
           </div>
-          <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-white sm:text-4xl md:mx-auto">
+          <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight sm:text-4xl md:mx-auto">
             <span class="relative inline-block">
               <span class="relative">Häufig gestellte Fragen</span>
             </span>
           </h2>
-          <p class="text-base text-white md:text-lg">
+          <p class="text-base md:text-lg text-gray-600">
             Oft werden uns die gleichen Fragen gestellt, deshalb versuchen wir
             das wichtigste hier zu beantworten. Bei weiteren Fragen können Sie
             sich jederzeit gerne melden.
@@ -726,17 +640,17 @@
           {% csrf_token %}
           {% for faq in FAQ %}
           
-          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="border-b">
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="border-b border-black">
             <button type="button" aria-label="Open item" title="Open item" class="flex items-center justify-between w-full p-4 focus:outline-none faq-toggle">
               <div itemprop="name" class="text-lg font-medium">
                {{ faq.question }}
               </div>
-              <svg viewBox="0 0 24 24" class="w-3 text-gray-600 faq-arrow">
-                <polyline fill="white" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points="2,7 12,17 22,7" stroke-linejoin="round"></polyline>
+              <svg viewBox="0 0 24 24" class="w-3 faq-arrow">
+                <polyline fill="black" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points="2,7 12,17 22,7" stroke-linejoin="round"></polyline>
               </svg>
             </button>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="p-4 pt-0 hidden faq-content">
-              <div itemprop="text" class="text-white">
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="p-4 pt-0 hidden faq-content text-gray-600">
+              <div itemprop="text" class="">
                 {{ faq.answer }}
               </div>
             </div>
