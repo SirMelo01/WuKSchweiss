@@ -27,10 +27,10 @@
               <div class="mb-12 max-w-[570px] lg:mb-0">
                 <input id="header" class="mb-3 inline-block w-1/3 appearance-none rounded-lg border-2 border-gray-200 bg-gray-200 px-4 py-2 text-center text-sm font-semibold uppercase leading-tight tracking-wider text-blue-600 focus:border-blue-500 focus:bg-white focus:outline-none" value="{% if textContent %}{{textContent.header}}{%else%}Kontakt Form{%endif%}" />
 
-                <input id="title" class="mb-6 mt-3 inline-block w-full appearance-none rounded-lg border-2 border-gray-200 bg-gray-200 px-4 py-2 text-center text-2xl font-bold uppercase leading-tight tracking-tight focus:border-blue-500 focus:bg-white focus:outline-none" value="{% if textContent %}{{textContent.title}}{%else%}Kontaktiere uns{%endif%}" />
+                <input id="title" class="mb-6 mt-3 inline-block w-full appearance-none rounded-lg border-2 border-gray-200 bg-gray-200 px-4 py-2 text-center text-2xl font-bold leading-tight tracking-tight focus:border-blue-500 focus:bg-white focus:outline-none" value="{% if textContent %}{{textContent.title}}{%else%}Kontaktiere uns{%endif%}" />
 
                 <textarea id="description" class="mb-7 h-60 w-full appearance-none rounded-lg border-2 border-gray-200 bg-gray-200 px-4 py-2 text-base leading-tight text-gray-800 focus:border-blue-500 focus:bg-white focus:outline-none md:text-lg">{% if textContent %}{{textContent.description}}{%else%}Wir freuen uns immer über deine Kontaktaufnahme! Egal, ob du Fragen hast, Feedback geben möchtest oder einfach nur Hallo sagen willst, wir sind hier, um zu helfen. Du kannst uns per E-Mail, Telefon oder über soziale Medien erreichen. Wir stehen bereit, um deine Anliegen schnell und effizient zu bearbeiten. Wir schätzen dein Interesse an unserer Arbeit und freuen uns darauf, von dir zu hören!{%endif%}</textarea>
-                <a href="https://maps.app.goo.gl/Fpnci7DEvHRaorJZ8" class="mb-8 flex w-full max-w-[370px]">
+                <span href="https://maps.app.goo.gl/Fpnci7DEvHRaorJZ8" class="mb-8 flex w-full max-w-[370px]">
                   <div
                     class="bg-blue-500/5 text-blue-500 hover:scale-110 mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded-xl sm:h-[70px] sm:max-w-[70px]">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,8 +47,8 @@
                       Bahnhofsallee 38, 23909 Ratzeburg
                     </p>
                   </div>
-                </a>
-                <a href="#" class="mb-8 flex w-full max-w-[370px]">
+                </span>
+                <span class="mb-8 flex w-full max-w-[370px]">
                   <div
                     class="bg-blue-500/5 text-blue-500 hover:scale-110 mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded-xl sm:h-[70px] sm:max-w-[70px]">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,8 +78,8 @@
                       +49 4541 82129
                     </p>
                   </div>
-                </a>
-                <a href="#" class="mb-8 flex w-full max-w-[370px]">
+                </span>
+                <span class="mb-8 flex w-full max-w-[370px]">
                   <div
                     class="bg-blue-500/5 text-blue-500 hover:scale-110 mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded-xl sm:h-[70px] sm:max-w-[70px]">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,7 +96,7 @@
                       wuk-schweisstechnik@t-online.de
                     </p>
                   </div>
-                </a>
+                </span>
               </div>
             </div>
             <div class="w-full px-4 lg:w-1/2 xl:w-5/12">
@@ -104,19 +104,19 @@
                 <form id="emailForm" method="post" action="/cms/email/request">
                   {% csrf_token %}
                   <div class="mb-6">
-                      <input id="name" type="text" placeholder="Dein Name" required
+                      <input id="name" type="text" placeholder="Dein Name" required disabled
                           class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full rounded-xl border py-3 px-[14px] text-base outline-none" />
                   </div>
                   <div class="mb-6">
-                      <input id="email" type="email" placeholder="Deine Email" required
+                      <input id="email" type="email" placeholder="Deine Email" required disabled
                           class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full rounded-xl border py-3 px-[14px] text-base outline-none" />
                   </div>
                   <div class="mb-6">
-                      <input id="subject" type="text" placeholder="Deine Anliegen"
+                      <input id="subject" type="text" placeholder="Deine Anliegen" disabled
                           class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full rounded-xl border py-3 px-[14px] text-base outline-none" />
                   </div>
                   <div class="mb-6">
-                      <textarea id="message" rows="6" placeholder="Deine Nachricht an uns" required
+                      <textarea id="message" rows="6" placeholder="Deine Nachricht an uns" disabled
                           class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full resize-none rounded-xl border py-3 px-[14px] text-base outline-none"></textarea>
                   </div>
                   <div>

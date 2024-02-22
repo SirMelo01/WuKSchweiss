@@ -629,7 +629,7 @@ def site_view_main_angebote(request):
     data = {}
     if TextContent.objects.filter(name="main_angebote").exists():
         data["textContent"] = TextContent.objects.get(name='main_angebote')
-    data["product_count"] = Product.objects.count(),
+    data["product_count"] = Product.objects.count()
     return render(request, "pages/cms/content/sites/mainsite/AngeboteContent.html", data)
 
 @login_required(login_url='login')
