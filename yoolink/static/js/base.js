@@ -3,6 +3,14 @@ const menu = document.querySelector("#navbar-cta");
 
 
 
+  function toggleMenu() {
+    if (menu.classList.contains("hidden")) {
+      menu.classList.remove("hidden");
+    } else {
+      menu.classList.add("hidden");
+    }
+  }
+
 function cookieRefresh() {
   if (cookieselect == null) {
     cookie.classList.add("block");

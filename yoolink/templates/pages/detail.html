@@ -7,7 +7,7 @@
  <!-- Content -->
  <div class="container mx-auto mt-10 h-full max-w-6xl px-3 mb-4">
   {% csrf_token %}  
-  <p class="my-7 text-center text-lg lg:text-left"><a href="/shop.html" class="text-blue-500">Shop</a> / Kategorie / Produkt</p>
+  <p class="my-7 text-center text-lg lg:text-left"><a href="/products" class="text-blue-500">Produkte</a> / Produkt</p>
     <div class="mx-4 grid grid-cols-1 lg:mx-0 lg:grid-cols-2 lg:gap-10">
       <!-- Image -->
       <div class="w-full">
@@ -19,13 +19,13 @@
   
         <!-- Galery -->
         <div class="mt-6 flex space-x-2">
-          <img src="{{product.title_image.url}}" alt="" />
+          <img src="{{product.title_image.url}}" class="product-image h-16 w-16 rounded-lg hover:scale-110 hover:cursor-pointer" alt="{{product.title}}" title="{{product.title}}" />
           
           {% if product.gallery %}
 
           {% for image in product.gallery.images.all %}
           
-          <img src="{{image.upload.url}}" title="{{image.upload.title}}" alt="{{image.upload.title}}" />
+          <img class="product-image h-16 w-16 rounded-lg hover:scale-110 hover:cursor-pointer" src="{{image.upload.url}}" title="{{image.upload.title}}" alt="{{image.upload.title}}" />
           
           {% endfor %}
 
@@ -39,7 +39,7 @@
       <div class="space-y-6 text-center mt-5 lg:mt-0 lg:text-left">
         <div class="h-full w-full rounded-xl border bg-white shadow-lg">
           <div class="p-4">
-            {% if product.discount_price %}
+            {% if product.is_reduced %}
               <div class="flex items-center">
                   <h2 class="text-2xl font-bold text-blue-500">{{ product.discount_price|floatformat:2 }} €</h2>
                   <h2 class="text-sm font-normal line-through text-gray-500 ml-5">{{ product.price|floatformat:2 }} €</h2>
@@ -118,7 +118,7 @@
         <p class="mt-6">{{product.description}}</p>
       </div>
       <div class="hidden justify-center lg:flex">
-        <img id="productImage" src="{{product.title_image.url}}" class="rounded-lg max-w-72" alt="" />
+        <img src="{{product.title_image.url}}" class="rounded-lg max-w-72" alt="" />
       </div>
     </div>
   </div>

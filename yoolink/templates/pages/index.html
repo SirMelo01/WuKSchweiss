@@ -17,7 +17,7 @@
   {% block Main %}
   <div class="container min-h-screen mx-auto">
     <!-- Hero Section --> 
-    <section id="hero" class="mt-12 sm:mt-20 xl:mt-36 mx-0 md:mx-9">
+    <section id="hero" class="mt-12 sm:mt-20">
       <!-- Flex container -->
       <div
         class="container flex flex-col-reverse items-center px-6 mx-auto mt-6 space-y-0 md:space-y-0 md:flex-row mb-20">
@@ -170,8 +170,8 @@
                 <div class="w-px h-full bg-gray-300"></div>
               </div>
               <div class="pt-1 pb-8">
-                <p class="mb-2 text-lg font-bold text-gray-900">Anfallende Büroarbeit</p>
-                <p class="text-gray-600 text-base sm:text-lg">Buchhaltung, Steuererklärung, etc.</p>
+                <p class="mb-2 text-lg font-bold text-gray-900">Anfallende Schweißarbeiten</p>
+                <p class="text-gray-600 text-base sm:text-lg">Reparationen, Aluminium (CroNi-Bereich), etc.</p>
               </div>
             </div>
             <div class="flex">
@@ -288,7 +288,7 @@
 
           <!-- Shopping Card -->
         {% for product in products %}
-          <a href="{% url 'product_detail' product.id %}">
+          <a href="{% url 'product-detail' product_id=product.id slug=product.slug  %}">
             <div class="h-full rounded-2xl border bg-white p-2 shadow-xl hover:shadow-blue-200">
               <div class="flex items-center justify-center">
                 <img src="{{ product.title_image.url }}" alt="{{ product.title }}" class="w-48 max-w-full" />

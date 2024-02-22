@@ -50,6 +50,7 @@ $(document).ready(function() {
   });
   $('#emailForm').submit(function(event) {
     event.preventDefault(); // Prevent the default form submission
+    console.log("Sende email...")
     var formData = {
         name: $('#name').val(),
         email: $('#email').val(),
@@ -61,8 +62,7 @@ $(document).ready(function() {
     $.ajax({
         type: 'POST',
         url: '/cms/email/request',
-        data: JSON.stringify(formData),
-        contentType: 'application/json',
+        data: formData,
         success: function(response) {
             // Handle successful response here
             console.log('Form submitted successfully');

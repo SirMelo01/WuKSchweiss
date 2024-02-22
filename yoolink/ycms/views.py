@@ -19,7 +19,7 @@ from django.db import transaction
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAuthenticated
 from django.core.mail import send_mail
 from .serializers import OrderSerializer, OrderItemSerializer
 from yoolink.users.models import User
@@ -1074,7 +1074,7 @@ def order_view(request):
     return render(request, "pages/cms/orders/overview.html", context)
 
 @api_view(['PATCH'])
-@permission_classes([IsAdminUser])
+@permission_classes([IsAuthenticated])
 def update_order_status_admin(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     new_status = request.POST.get('status')
@@ -1115,7 +1115,7 @@ def update_order_status_admin(request, order_id):
 
 # views.py
 @api_view(['DELETE'])
-@permission_classes([IsAdminUser])
+@permission_classes([IsAuthenticated])
 def delete_review(request, review_id):
     try:
         review = Review.objects.get(pk=review_id)
@@ -1126,7 +1126,7 @@ def delete_review(request, review_id):
 
 # views.py
 @api_view(['DELETE'])
-@permission_classes([IsAdminUser])
+@permission_classes([IsAuthenticated])
 def delete_order(request, order_id):
     try:
         order = Order.objects.get(pk=order_id)
@@ -1138,7 +1138,7 @@ def delete_order(request, order_id):
 # views.py
 
 @api_view(['GET'])
-@permission_classes([IsAdminUser])
+@permission_classes([IsAuthenticated])
 def get_order_by_id(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     
@@ -1151,7 +1151,7 @@ from django.db.models import Q
 from datetime import timezone, timedelta
 
 @api_view(['GET'])
-@permission_classes([IsAdminUser])
+@permission_classes([IsAuthenticated])
 def get_orders(request):
     status_filter = request.GET.get('status')
     buyer_email_filter = request.GET.get('buyer_email')
@@ -1450,7 +1450,6 @@ def verify_cart(request):
     message += f"\nUmsatzsteuer (19%): {order.calculate_tax():.2f} Euro"
     message += f"\n------------------------------------------"
     message += f"\nGesamtpreis (mit 19% Steuern): {order.total():.2f} Euro\n\n"
-    message += f"\nIhre ausgewählte Bezahlmethode: {order.get_payment_display()}"
     message += f"\nWir haben Ihren Auftrag erhalten und benötigen noch eine Bestätigung von Ihnen, um fortzufahren. \nBitte klicken Sie auf den folgenden Link, um Ihren Auftrag zu bestätigen und zur Kasse zu gelangen:\n{verification_url}\n\n"
     message += f"Nach erfolgreicher Bestätigung können Sie Ihre Ware bestellen oder abholen.\n\nVielen Dank für Ihr Vertrauen!\n\nMit freundlichen Grüßen,\n{full_name}"
     message += f"\n{company_name}"
@@ -1737,7 +1736,7 @@ def opening_hours_view(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsAdminUser])
+@permission_classes([IsAuthenticated])
 def opening_hours_update(request):
     opening_hours_data = request.POST.get('opening_hours')
     opening_hours = json.loads(opening_hours_data)

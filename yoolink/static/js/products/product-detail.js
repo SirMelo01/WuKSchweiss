@@ -1,5 +1,12 @@
 var csrftoken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
 $(document).ready(function() {
+    const $productImage = $("#productImage");
+
+    $(".product-image").on("click", (event) => {
+        console.log("start");
+        console.log($productImage.attr("src"));
+        $productImage.attr("src", $(event.target).attr("src"));
+    });
     $('#addToCart').click(function() {
         var productId = $(this).attr('productId');
         var amount = $('#amount').val();
@@ -27,8 +34,10 @@ $(document).ready(function() {
                 // Handle success response here
                 if(response.success) {
                     sendNotif("Das Produkt wurde zum Warenkorb hinzugefügt", "success")
+                } else {
+                    sendNotif(response.error, "error")
                 }
-                sendNotif(response.error, "error")
+                
 
             },
             error: function(xhr, status, error) {
