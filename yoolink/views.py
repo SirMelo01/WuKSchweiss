@@ -77,8 +77,8 @@ def shop(request):
    context.update(get_opening_hours())
    return render(request, 'pages/shop.html', context)
 
-def detail(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
+def detail(request, product_id, slug):
+    product = get_object_or_404(Product, id=product_id, slug=slug)
     context={"product": product}
     context.update(get_opening_hours())
     return render(request, 'pages/detail.html', context)
