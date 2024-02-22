@@ -79,6 +79,12 @@ def shop(request):
 
 def detail(request, product_id, slug):
     product = get_object_or_404(Product, id=product_id, slug=slug)
+    last_url = request.META.get('HTTP_REFERER')
+    if not product.is_active:
+        return render(request, "pages/errors/error.html", {
+            "error": "Dieses Produkt ist nicht mehr verfügbar",
+            "saveLink": last_url if last_url else '/'
+        })
     context={"product": product}
     context.update(get_opening_hours())
     return render(request, 'pages/detail.html', context)
