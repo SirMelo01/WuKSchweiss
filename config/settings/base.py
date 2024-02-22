@@ -251,7 +251,7 @@ EMAIL_USE_TLS = True
 EMAIL_TIMEOUT = 5
 
 EMAIL_OWNER = 'yoolink@t-online.de'
-DASHBOARD_URL = 'https://yoolink.de/'
+DASHBOARD_URL = 'https://wundkschweisstechnik.de/'
 
 
 # ADMIN
