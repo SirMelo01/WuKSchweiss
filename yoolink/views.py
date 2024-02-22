@@ -76,4 +76,19 @@ def detail(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     context={"product": product}
     context.update(get_opening_hours())
-    return render(request, 'pages/detail.html', )
+    return render(request, 'pages/detail.html', context)
+
+def impressum(request):
+    context = {}
+    context.update(get_opening_hours())
+    return render(request, 'pages/impressum.html', context)
+
+def datenschutz(request):
+    context = {}
+    context.update(get_opening_hours())
+    return render(request, 'pages/datenschutz.html', context)
+
+def cookies(request):
+    context = {}
+    context.update(get_opening_hours())
+    return render(request, 'pages/cookies.html', context)
