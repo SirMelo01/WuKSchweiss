@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.3.0 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -191,6 +191,10 @@ select,
 textarea {
   font-family: inherit;
   /* 1 */
+  font-feature-settings: inherit;
+  /* 1 */
+  font-variation-settings: inherit;
+  /* 1 */
   font-size: 100%;
   /* 1 */
   font-weight: inherit;
@@ -342,6 +346,14 @@ menu {
 }
 
 /*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
 Prevent resizing textareas horizontally by default.
 */
 
@@ -436,6 +448,9 @@ video {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -483,6 +498,9 @@ video {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -938,13 +956,11 @@ video {
 }
 
 .ms-2 {
-  -webkit-margin-start: 0.5rem;
-          margin-inline-start: 0.5rem;
+  margin-inline-start: 0.5rem;
 }
 
 .ms-3 {
-  -webkit-margin-start: 0.75rem;
-          margin-inline-start: 0.75rem;
+  margin-inline-start: 0.75rem;
 }
 
 .mt-1 {
@@ -1618,10 +1634,6 @@ video {
 
 .items-baseline {
   align-items: baseline;
-}
-
-.justify-normal {
-  justify-content: normal;
 }
 
 .justify-end {
@@ -2434,6 +2446,10 @@ video {
   padding-top: 0.25rem;
 }
 
+.pt-10 {
+  padding-top: 2.5rem;
+}
+
 .pt-16 {
   padding-top: 4rem;
 }
@@ -2631,11 +2647,6 @@ video {
 .text-blue-600 {
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity));
-}
-
-.text-blue-900 {
-  --tw-text-opacity: 1;
-  color: rgb(30 58 138 / var(--tw-text-opacity));
 }
 
 .text-gray-100 {
@@ -4134,6 +4145,11 @@ video {
     line-height: 2.5rem;
   }
 
+  .sm\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
   .sm\:text-\[80px\] {
     font-size: 80px;
   }
@@ -4192,10 +4208,6 @@ video {
 
   .md\:mb-12 {
     margin-bottom: 3rem;
-  }
-
-  .md\:ml-0 {
-    margin-left: 0px;
   }
 
   .md\:ml-6 {
@@ -4280,10 +4292,6 @@ video {
 
   .md\:justify-between {
     justify-content: space-between;
-  }
-
-  .md\:justify-evenly {
-    justify-content: space-evenly;
   }
 
   .md\:space-x-8 > :not([hidden]) ~ :not([hidden]) {

@@ -3,45 +3,51 @@
 {% block title %}{{block.super}} | Impressum{% endblock title %}
 
 {% block content %}
-<div class="flex flex-wrap  ml-3 justify-normal md:justify-evenly mt-12 ">
-    <div class="mr-5 ">
-     <h1 class="text-3xl text-blue-900">
-        Impressum
-      </h1>
-      <p class="italic">Angaben gemäß § 5 TMG</p>
-      <br>
-      <p class="text-md">Sebastian Rauch</p>
-      <p class="text-md">Am Altbach 6</p>
-      <p class="text-md">94491 Hengersberg</p>
-      <h2 class="text-md mt-3">
-        Vertreten durch:
-      </h2>
-      <p class="text-md">Sebastian Rauch</p>
-      <br>
-    </div>
-    <div class="mb-5 md:mb-0  md:ml-0  ">
-      <h2 class="text-3xl mb-2 text-blue-900">
-        Kontakt
-      </h2>
-      <p class="text-md">Telefon: </p>
-      <p class="text-md">E-mail: yoolink@t-online.de</p>
-      <h2 class="text-md mt-3s">
-        Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:
-      </h2>
-      <p class="text-md">Sebastian Rauch</p>
-      <p class="text-md">Am Altbach 6</p>
-      <p class="text-md">94491 Hengersberg</p>
-    </div>
+
+<div class="container pt-10 w-full mx-auto px-2 md:px-40">
+  <div>
+    <h1 class="text-3xl font-bold tracki text-center sm:text-5xl text-gray-900">Impressum</h1>
   </div>
-    <br>
-    <br>
-  <div class="hidden lg:block">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+  <div class="mt-8">
+    <h2 class="text-lg md:text-2xl">W&K Schweßtechnik Handelsgesellschaft mbH</h2>
+    <p>Bahnhofsallee 38</p>
+    <p>23909 Ratzeburg</p>
+    <p>Telefon: +49 4541 82129</p>
+    <p>E-Mail: wuk-schweisstechnik@t-online.de</p>
   </div>
-  {%endblock content%}
+  <div class="mt-6">
+    <h2 class="text-lg md:text-2xl">Geschäftsführung</h2>
+    <p>Martin Wille</p>
+  </div>
+  <div class="mt-6">
+    <h2 class="text-lg md:text-2xl">Registergericht</h2>
+    <p>Amtsgericht Lübeck</p>
+    <p>HRB 1199 RZ</p>
+  </div>
+  <div class="mt-6">
+    <h2 class="text-lg md:text-2xl">Wirtschafts-Identifikationsnummer:</h2>
+    <p>2229417093</p>
+  </div>
+  <div class="mt-6">
+    <h2 class="text-lg md:text-2xl">Ust-IdNr.</h2>
+    <p>DE135120133</p>
+  </div>
+  <div class="mt-6">
+    <h2 class="text-lg md:text-2xl">Haftungshinweis</h2>
+    <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich. Diese Erklärung gilt für alle auf unserer Homepage angebrachten Links und für alle Inhalte der Seiten, zu denen Links führen.
+    </p>
+  </div>
+  <div class="mt-6">
+    <h2 class="text-lg md:text-2xl">Copyright</h2>
+    <p>© W&K Schweißtechnik Handelsgesellschaft mbH. Alle Rechte vorbehalten.</p>
+    <p>Text, Bilder, Grafiken, Sound, Animationen und Videos unterliegen dem Schutz des Urheberrechtes und anderer Schutzgesetze. Der Inhalt dieser Websites darf nicht zu kommerziellen Zwecken kopiert, verbreitet, verändert oder Dritten zugänglich gemacht werden. Einige W&K Schweißtechnik Handelsgesellschaft mbH - Websites enthalten außerdem Bilder, die dem Copyright Dritter unterliegen.
+    </p>
+  </div>
+  <div class="mt-6 mb-8">
+    <h2 class="text-lg md:text-2xl mb-30">Markenschutz</h2>
+    <p>Verwendete Kennzeichen sind Marken ihrer jeweiligen Eigentümer.</p>
+  </div>
+</div>
+
+
+{%endblock content%}
