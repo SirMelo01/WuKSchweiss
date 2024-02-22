@@ -1,6 +1,39 @@
 /* Alerts
 * @Aziz (https://codepen.io/EL_Aziz/pen/qBEyvMR) - MIT
 */
+.navItem::before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .navItem:hover::before{
+    transform: scaleX(1);
+  }
+
+  .blogTitle::before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    background-color: blue;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .blogTitle:hover::before{
+    transform: scaleX(1);
+  }
+
 #notify {
     position: fixed;
     z-index: 1000;

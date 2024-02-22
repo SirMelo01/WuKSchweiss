@@ -8,7 +8,6 @@ var map;
 //Map
 
 function mapLoad() {
-  console.log("ARSCH");
   if (cookiemapselect === null || cookiemapselect === "false") {
     covermap.classList.remove("hidden");
     realmap.classList.add("hidden");
@@ -17,13 +16,16 @@ function mapLoad() {
     realmap.classList.remove("hidden");
 
     // Karte wird geladen
-    map.setView([48.6987771, 13.1176147], 13);
+    map.setView([53.699497, 10.742065], 13);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
       attribution:
         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(map);
-    var marker = L.marker([48.698771, 13.1176147]).addTo(map);
+    
+    L.marker([53.699497, 10.742065]).addTo(map)
+    .bindPopup('W&K Schweißtechnik GmbH.<br> Bahnhofsallee 38, 23909 Ratzeburg.')
+    .openPopup();
     map.scrollWheelZoom.disable();
   }
 }
