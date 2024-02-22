@@ -28,10 +28,7 @@
             </span> {% if heroText %}{{heroText.title}}{% else %}Jahre W&K Schweißtechnik GmbH{% endif %}
           </h1>
           <p class="max-w-xl text-center text-gray-600 md:text-left text-base sm:text-lg">
-            {% if heroText %}{{heroText.description}}{% else %}Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Eligendi magni dolore cumque, at quam, accusantium
-          aliquid temporibus beatae quidem voluptas neque adipisci ullam doloremque exercitationem rem eius architecto
-          necessitatibus fuga?{% endif %}
+            {% if heroText %}{{heroText.description}}{% else %}Bereit für hochwertige Schweißarbeiten, die Ihre Visionen zum Leben erwecken? Als erfahrener Schweißer stehe ich bereit Ihre Projekte umzusetzen. Von Reparaturen bis zu umfangreichen Konstruktionen - kontaktieren Sie mich noch heute!{% endif %}
           </p>
           <div>
             <button type="submit"
@@ -363,9 +360,7 @@
                 {% if contactText %}{{contactText.title}}{%else%}Kontaktiere uns{%endif%}
               </h2>
               <p class="leading-relaxed mb-9 text-gray-600 text-sm sm:text-base">
-                {% if contactText %}{{contactText.description}}{%else%}Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eius tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                adiqua minim veniam quis nostrud exercitation ullamco{%endif%}
+                {% if contactText %}{{contactText.description}}{%else%}Wir freuen uns immer über deine Kontaktaufnahme! Egal, ob du Fragen hast, Feedback geben möchtest oder einfach nur Hallo sagen willst, wir sind hier, um zu helfen. Du kannst uns per E-Mail, Telefon oder über soziale Medien erreichen. Wir stehen bereit, um deine Anliegen schnell und effizient zu bearbeiten. Wir schätzen dein Interesse an unserer Arbeit und freuen uns darauf, von dir zu hören!{%endif%}
               </p>
               <a href="https://maps.app.goo.gl/Fpnci7DEvHRaorJZ8" class="mb-8 flex w-full max-w-[370px]">
                 <div
@@ -438,30 +433,30 @@
           </div>
           <div class="w-full px-4 lg:w-1/2 xl:w-5/12">
             <div class="relative p-8 bg-slate-100 rounded-xl shadow-xl sm:p-12">
-              <form>
+              <form id="emailForm" method="post" action="/cms/email/request">
+                {% csrf_token %}
                 <div class="mb-6">
-                  <input type="text" placeholder="Dein Name" required
-                    class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full rounded-xl border py-3 px-[14px] text-base outline-none" />
+                    <input id="name" type="text" placeholder="Dein Name" required
+                        class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full rounded-xl border py-3 px-[14px] text-base outline-none" />
                 </div>
                 <div class="mb-6">
-                  <input type="email" placeholder="Deine Email" required
-                    class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full rounded-xl border py-3 px-[14px] text-base outline-none" />
+                    <input id="email" type="email" placeholder="Deine Email" required
+                        class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full rounded-xl border py-3 px-[14px] text-base outline-none" />
                 </div>
                 <div class="mb-6">
-                  <input type="text" placeholder="Deine Telefonnummer"
-                    class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full rounded-xl border py-3 px-[14px] text-base outline-none" />
+                    <input id="subject" type="text" placeholder="Deine Anliegen" required
+                        class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full rounded-xl border py-3 px-[14px] text-base outline-none" />
                 </div>
                 <div class="mb-6">
-                  <textarea rows="6" placeholder="Deine Nachricht an uns" required
-                    class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full resize-none rounded-xl border py-3 px-[14px] text-base outline-none"></textarea>
+                    <textarea id="message" rows="6" placeholder="Deine Nachricht an uns" required
+                        class="border-stroke focus:border-blue-500 text-body-color focus:border-primary w-full resize-none rounded-xl border py-3 px-[14px] text-base outline-none"></textarea>
                 </div>
                 <div>
-                  <button type="submit"
-                    class="w-full p-3 text-white transition border rounded-xl border-blue-500 bg-blue-500 hover:bg-opacity-90">
-                    Nachricht senden
-                  </button>
+                    <button type="submit" class="w-full p-3 text-white transition border rounded-xl border-blue-500 bg-blue-500 hover:bg-opacity-90">
+                        Nachricht senden
+                    </button>
                 </div>
-              </form>
+            </form>
               <div>
                 <span class="absolute -left-7 -bottom-7 z-[-1]">
                   <svg width="107" height="134" viewBox="0 0 107 134" fill="none" xmlns="http://www.w3.org/2000/svg">

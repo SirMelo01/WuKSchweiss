@@ -1,6 +1,7 @@
 import json
 import re
 from django.shortcuts import get_object_or_404, render, redirect
+from yoolink.views import get_opening_hours
 from yoolink.ycms.models import fileentry, OpeningHours, ShippingAddress, Review, FAQ, UserSettings, Order, Message, OrderItem, Galerie, Category, Brand, Blog, GaleryImage, TextContent, Product
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
@@ -628,6 +629,7 @@ def site_view_main_angebote(request):
     data = {}
     if TextContent.objects.filter(name="main_angebote").exists():
         data["textContent"] = TextContent.objects.get(name='main_angebote')
+    data["product_count"] = Product.objects.count(),
     return render(request, "pages/cms/content/sites/mainsite/AngeboteContent.html", data)
 
 @login_required(login_url='login')
@@ -1287,13 +1289,18 @@ def cart_view(request):
             "error": "Deine Bestellung wurde bereits verifiziert und bestellt, wodurch der Warenkorb nicht mehr valide ist. Bitte füge neue Produkte hinzu, um eine neue Bestellung zu tätigen!",
             "saveLink": last_url if last_url else '/'
         })
+    context = {
+        "order": order
+    }
+    context.update(get_opening_hours())
     
-    
-    return render(request, "pages/cms/orders/cart.html", {"order": order})
+    return render(request, "pages/cms/orders/cart.html", context)
 
 
 def cart_verify_success_view(request):
-    return render(request, "pages/cms/orders/success/cart-verify-success.html", {})
+    context = {}
+    context.update(get_opening_hours())
+    return render(request, "pages/cms/orders/success/cart-verify-success.html", context)
 
 
 @api_view(['DELETE'])
@@ -1487,10 +1494,14 @@ def order_verify_view(request):
             "error": "Diese Bestellung wurde bereits verifiziert und bestellt. Für weitere Informationen überprüfe deine E-Mails oder schreibe uns eine Nachricht. Status der Bestellung: " + order.get_status_display(),
             "saveLink": last_url if last_url else '/'
         })
-    return render(request, "pages/cms/orders/verify.html", {"order": order})
+    context = {"order": order}
+    context.update(get_opening_hours())
+    return render(request, "pages/cms/orders/verify.html", context)
 
 def order_verify_success_view(request):
-    return render(request, "pages/cms/orders/success/order-verify-success.html", {})
+    context = {}
+    context.update(get_opening_hours())
+    return render(request, "pages/cms/orders/success/order-verify-success.html", context)
 
 @api_view(['POST'])
 @authentication_classes([])

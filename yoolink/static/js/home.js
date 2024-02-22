@@ -30,6 +30,8 @@ function mapLoad() {
 
 
 
+var csrftoken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+
 //FQA
 $(document).ready(function() {
   $(".faq-toggle").click(function() {
@@ -44,6 +46,36 @@ $(document).ready(function() {
       arrow.removeClass("rotate-180");
     }
   });
+  $('#emailForm').submit(function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    var formData = {
+        name: $('#name').val(),
+        email: $('#email').val(),
+        title: $('#subject').val(),
+        message: $('#message').val(),
+        csrfmiddlewaretoken: csrftoken,
+    };
+    // Send form data to the server using AJAX
+    $.ajax({
+        type: 'POST',
+        url: '/cms/email/request',
+        data: JSON.stringify(formData),
+        contentType: 'application/json',
+        success: function(response) {
+            // Handle successful response here
+            console.log('Form submitted successfully');
+            if(response.success) {
+              sendNotif("Ihre Nachricht wurde erfolgreich gesendet", "success")
+            }
+            $('#emailForm')[0].reset();
+        },
+        error: function(xhr, status, error) {
+            // Handle error response here
+            console.error('Form submission failed');
+            sendNotif("Etwas ist schief gelaufen. Versuchen Sie es bitte später nochmal.", "error")
+        }
+    });
+});
 });
 
 setTimeout(() => {

@@ -3,16 +3,10 @@
 {% block title %} {{block.super}} | CMS - Seiteninhalt {% endblock %}
 
 <!-- Needed for Galery (Slick) -->
-{% block javascript %}
-<!-- Add the slick-theme.css if you want default styling -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/cms/slick/slick-carousel.css' %}" />
-<!-- Add the slick-theme.css if you want default styling -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/cms/slick/slick-theme.css' %}" />
-{% endblock %}
 
 {% block content %}
 
-{% include "pages/cms/components/GalerySelectModal.html" %}
+{% include "pages/cms/components/ImageSelectModal.html" %}
 
 
 <div class="container mx-auto mt-8">
@@ -26,7 +20,7 @@
         </div>
     </div>
 
-    <div class="container mx-auto min-h-screen">
+    <div class="container mx-auto">
         <!-- Hero Section -->
         <section id="hero" class="mx-0 mt-12 sm:mt-20 md:mx-9">
             <!-- Flex container -->
@@ -56,7 +50,7 @@
                     class="relative lg:mt-16 lg:mb-28 h-96 m-8 w-full overflow-hidden shadow-2xl rounded-md hidden lg:block">
                     <img class="absolute left-0 top-0 w-[45rem] max-w-none content-image" key="main_hero"
                         imgId="{% if heroImage %}{{heroImage.id}}{% endif %}"
-                        src="{% if heroImage %}{{ heroImage.file.url }}{% else %}{% static 'images/welding02.jpg' %}{% endif %}"
+                        src="{% if heroImage %}{{ heroImage.file.url }}{% else %}{% static 'images/welding.jpg' %}{% endif %}"
                         alt="Image">
                     <span
                         class="absolute top-0 left-0 inline-block px-2 py-1 text-sm font-semibold text-white bg-orange-500 rounded-full not-sortable z-40 hover:cursor-pointer edit-img"><i
@@ -75,22 +69,9 @@
 <script src="{% static 'js/cms/content/save-text.js' %}"></script>
 <script defer src="{% static 'js/cms/content/siteManager.js' %}"></script>
 <!-- Needed for Galery -->
-<script type="text/javascript" src="{% static 'js/cms/slick/slick.min.js' %}"></script>
-<script>
-    $('.carousel').slick({
-        dots: true,  // Display navigation dots
-        arrows: true,  // Display navigation arrows
-        infinite: true,  // Enable infinite looping
-        slidesToShow: 1,  // Number of slides to show at once
-        slidesToScroll: 1,  // Number of slides to scroll at a time
-        autoplay: true,
-        autoplaySpeed: 3000,
-        // Add any other configuration options as needed
-    });
-</script>
 <script defer>
     $(document).ready(function () {
-        loadGalerien(false);
+        loadImages(false);
     })
 </script>
 {% endcompress js %}

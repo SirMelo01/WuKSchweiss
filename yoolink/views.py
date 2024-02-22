@@ -3,6 +3,15 @@ from yoolink.ycms.models import FAQ, UserSettings, Message, Product, OpeningHour
 import datetime
 from django.http import HttpResponseRedirect
 
+def get_opening_hours():
+    opening_hours = {}
+    days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
+    for day in days:
+        if OpeningHours.objects.filter(day=day).exists():
+            opening_hours[f"opening_{day.lower()}"] = OpeningHours.objects.get(day=day)
+        else:
+            opening_hours[f"opening_{day.lower()}"] = None
+    return opening_hours
 
 def load_index(request):
     faq = FAQ.objects.all()
@@ -54,29 +63,17 @@ def load_index(request):
     if fileentry.objects.filter(place='main_flow').exists():
         context["flowImage"] = fileentry.objects.get(place='main_flow')
 
-    context["user_settings"] = UserSettings.objects.filter(user__is_staff=False).first()
-
-
-    if OpeningHours.objects.filter(day='MON').exists():
-        context["opening_mon"] = OpeningHours.objects.get(day='MON')
-    if OpeningHours.objects.filter(day='TUE').exists():
-        context["opening_tue"] = OpeningHours.objects.get(day='TUE')
-    if OpeningHours.objects.filter(day='WED').exists():
-        context["opening_wed"] = OpeningHours.objects.get(day='WED')  
-    if OpeningHours.objects.filter(day='THU').exists():
-        context["opening_thu"] = OpeningHours.objects.get(day='THU')
-    if OpeningHours.objects.filter(day='FRI').exists():
-        context["opening_fri"] = OpeningHours.objects.get(day='FRI')
-    if OpeningHours.objects.filter(day='SAT').exists():
-        context["opening_sat"] = OpeningHours.objects.get(day='SAT') 
-    if OpeningHours.objects.filter(day='SUN').exists():
-        context["opening_sun"] = OpeningHours.objects.get(day='SUN') 
-
+    context["user_settings"] = UserSettings.objects.filter(user__is_staff=False).first() 
+    context.update(get_opening_hours())
     return render(request, 'pages/index.html', context=context)
 
 def shop(request):
-   return render(request, 'pages/shop.html', context={"products": Product.objects.filter(is_active=True)})
+   context={"products": Product.objects.filter(is_active=True)}
+   context.update(get_opening_hours())
+   return render(request, 'pages/shop.html', context)
 
 def detail(request, product_id):
-     product = get_object_or_404(Product, id=product_id)
-     return render(request, 'pages/detail.html', context={"product": product})
+    product = get_object_or_404(Product, id=product_id)
+    context={"product": product}
+    context.update(get_opening_hours())
+    return render(request, 'pages/detail.html', )
