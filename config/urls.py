@@ -13,6 +13,7 @@ from django.urls import path, include
 
 from django.contrib.sitemaps.views import sitemap
 from yoolink.sitemaps import StaticViewSitemap, BlogSitemap
+from yoolink.ycms.views import cart_verify_success_view, cart_view, order_verify_success_view, order_verify_view
 
 sitemaps = {
     'static': StaticViewSitemap,
@@ -22,7 +23,7 @@ sitemaps = {
 urlpatterns = [
     path("", view=load_index, name="home"),
     path("products/", view=shop, name="products"),
-    path("products/<int:product_id>/", view=detail, name="product_detail"),
+    path("products/<int:product_id>-<slug:slug>/", view=detail, name="product-detail"),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # Your stuff: custom urls includes go here
@@ -34,6 +35,13 @@ urlpatterns = [
     path("cookies/", view=cookies, name="cookies"),
     path("cms/", include("yoolink.ycms.urls", namespace="ycms")),
     path("blog/", include("yoolink.blog.urls", namespace="blog")),
+    
+    path('cart/', cart_view, name='cart-view'),
+    path('cart/success/', cart_verify_success_view, name='cart-verify-success-view'),
+
+    path('order/verify/', order_verify_view, name='order-verify'),
+    path('order/success/', order_verify_success_view, name='order-verify-success-view'),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # API URLS

@@ -1429,7 +1429,7 @@ def verify_cart(request):
 
     # Generate verification link
     token = str(order.uuid)
-    verification_url = request.scheme + '://' + request.get_host() + reverse('cms:order-verify') + f'?token={token}&order_id={order_id}'
+    verification_url = request.scheme + '://' + request.get_host() + reverse('order-verify') + f'?token={token}&order_id={order_id}'
     # Send confirmation email with verification link
     user_settings = UserSettings.objects.filter(user__is_staff=False).first()
     full_name = user_settings.full_name

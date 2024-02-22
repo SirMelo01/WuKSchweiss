@@ -45,7 +45,7 @@
       <div class="mx-2 grid grow grid-cols-1 gap-4 md:grid-cols-2 lg:mx-0 lg:grid-cols-3">
         <!-- Shopping Card -->
         {% for product in products %}
-          <a href="{% url 'product_detail' product.id %}">
+          <a href="{% url 'product-detail' pk=product.pk slug_title=product.slug  %}">
             <div class="h-full rounded-2xl border bg-white p-2 shadow-xl hover:shadow-blue-200">
               <div class="flex items-center justify-center">
                 <img src="{{ product.title_image.url }}" alt="{{ product.title }}" class="w-48 max-w-full" />
