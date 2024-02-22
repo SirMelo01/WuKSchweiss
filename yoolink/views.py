@@ -11,6 +11,11 @@ def get_opening_hours():
             opening_hours[f"opening_{day.lower()}"] = OpeningHours.objects.get(day=day)
         else:
             opening_hours[f"opening_{day.lower()}"] = None
+            
+    user_settings = UserSettings.objects.filter(user__is_staff=False)
+    if user_settings.exists():
+        user_settings = user_settings.first()
+        opening_hours["owner_data"] = user_settings
     return opening_hours
 
 def load_index(request):
