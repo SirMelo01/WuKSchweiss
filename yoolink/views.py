@@ -25,11 +25,11 @@ def load_index(request):
         'FAQ': faq,
     }
     
-    reduced_products = Product.objects.filter(is_reduced=True)
+    reduced_products = Product.objects.filter(is_reduced=True, is_active=True)
     if reduced_products.exists():
         products = reduced_products[:3]
     else:
-        products = Product.objects.all()[:3]
+        products = Product.objects.filter(is_active=True)[:3]
 
     context["products"] = products
 
@@ -79,6 +79,12 @@ def shop(request):
 
 def detail(request, product_id, slug):
     product = get_object_or_404(Product, id=product_id, slug=slug)
+    last_url = request.META.get('HTTP_REFERER')
+    if not product.is_active:
+        return render(request, "pages/errors/error.html", {
+            "error": "Dieses Produkt ist nicht mehr verfügbar",
+            "saveLink": last_url if last_url else '/'
+        })
     context={"product": product}
     context.update(get_opening_hours())
     return render(request, 'pages/detail.html', context)
