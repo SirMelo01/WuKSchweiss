@@ -61,7 +61,7 @@ $(document).ready(function() {
     // Send form data to the server using AJAX
     $.ajax({
         type: 'POST',
-        url: '/cms/email/request',
+        url: '/cms/email/request/',
         data: formData,
         success: function(response) {
             // Handle successful response here

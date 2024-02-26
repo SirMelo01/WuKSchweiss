@@ -190,7 +190,7 @@
               <div class="pt-1 pb-8">
                 <p class="mb-2 text-lg font-bold text-gray-900">Kontaktaufnahme</p>
                 <p class="text-gray-600 text-base sm:text-lg">
-                  Vereinabaren Sie einen Termin mit mir über die angegebenen Kontaktwege.
+                  Vereinabaren Sie einen Termin mit uns über die angegebenen Kontaktwege.
                 </p>
               </div>
             </div>
@@ -210,7 +210,7 @@
               <div class="pt-1 pb-8">
                 <p class="mb-2 text-lg font-bold text-gray-900">Individuelle Absprache</p>
                 <p class="text-gray-600 text-base sm:text-lg">
-                  Geimansam bespreche ich mit Ihnen zusammen die anfallende Arbeit und gebe Ihnen ein auf Sie abgestimmtes Angebot.
+                  Geimansam besprechen wir mit Ihnen zusammen die anfallende Arbeit und geben Ihnen ein auf Sie abgestimmtes Angebot.
                 </p>
               </div>
             </div>
@@ -230,7 +230,7 @@
               <div class="pt-1 pb-8">
                 <p class="mb-2 text-lg font-bold text-gray-900">Ausführung</p>
                 <p class="text-gray-600 text-base sm:text-lg">
-                  Im nächsten Schritt erledige ich die Arbeit und gebe Ihnen Rückmeldung.
+                  Im nächsten Schritt erledigen wir die Arbeit und geben Ihnen Rückmeldung.
                 </p>
               </div>
             </div>
@@ -374,7 +374,7 @@
                     Wo finden Sie uns?
                   </h4>
                   <p class="text-gray-600 text-sm sm:text-base">
-                    Bahnhofsallee 38, 23909 Ratzeburg
+                    {% if owner_data and owner_data.address %}{{owner_data.address}}{% else %}Bahnhofsallee 38, 23909 Ratzeburg{%endif%}
                   </p>
                 </div>
               </a>
@@ -405,7 +405,7 @@
                     Telefonnummer
                   </h4>
                   <p class="text-gray-600 text-sm sm:text-base">
-                    +49 4541 82129
+                    {% if owner_data and owner_data.tel_number %}{{owner_data.tel_number}}{% else %}+49 4541 82129{% endif %}
                   </p>
                 </div>
               </a>
@@ -423,7 +423,7 @@
                     Email Addresse
                   </h4>
                   <p class="text-gray-600 text-sm sm:text-base">
-                    wuk-schweisstechnik@t-online.de
+                    {% if owner_data and owner_data.email %}{{owner_data.email}}{% else %}wuk-schweisstechnik@t-online.de{% endif %}
                   </p>
                 </div>
               </a>

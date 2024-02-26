@@ -4727,28 +4727,8 @@ video {
     margin-right: 2.5rem;
   }
 
-  .xl\:mt-28 {
-    margin-top: 7rem;
-  }
-
   .xl\:mt-4 {
     margin-top: 1rem;
-  }
-
-  .xl\:mt-32 {
-    margin-top: 8rem;
-  }
-
-  .xl\:-mt-96 {
-    margin-top: -24rem;
-  }
-
-  .xl\:mt-96 {
-    margin-top: 24rem;
-  }
-
-  .xl\:mt-36 {
-    margin-top: 9rem;
   }
 
   .xl\:flex {

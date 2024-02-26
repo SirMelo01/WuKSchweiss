@@ -9,15 +9,14 @@
     <h1 class="text-3xl font-bold tracki text-center sm:text-5xl text-gray-900">Impressum</h1>
   </div>
   <div class="mt-8">
-    <h2 class="text-lg md:text-2xl">W&K Schweßtechnik Handelsgesellschaft mbH</h2>
-    <p>Bahnhofsallee 38</p>
-    <p>23909 Ratzeburg</p>
-    <p>Telefon: +49 4541 82129</p>
-    <p>E-Mail: wuk-schweisstechnik@t-online.de</p>
+    <h2 class="text-lg md:text-2xl">W&K Schweißtechnik Handelsgesellschaft mbH</h2>
+    <p>Adresse: {% if owner_data and owner_data.address %}{{owner_data.address}}{% else %}Bahnhofsallee 38, 23909 Ratzeburg{% endif %}</p>
+    <p>Telefon: {% if owner_data and owner_data.tel_number %}{{owner_data.tel_number}}{% else %}+49 4541 82129{% endif %}</p>
+    <p>E-Mail: {% if owner_data and owner_data.email %}{{owner_data.email}}{% else %}wuk-schweisstechnik@t-online.de{% endif %}</p>
   </div>
   <div class="mt-6">
     <h2 class="text-lg md:text-2xl">Geschäftsführung</h2>
-    <p>Martin Wille</p>
+    {% if owner_data and owner_data.full_name %}{{owner_data.full_name}}{% else %}Martin Wille{% endif %}
   </div>
   <div class="mt-6">
     <h2 class="text-lg md:text-2xl">Registergericht</h2>

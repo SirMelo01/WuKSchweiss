@@ -1656,8 +1656,8 @@ def email_send(request):
     subject_company = "Neue Nachricht in Ihrem CMS"
     message_company = f"Hallo Team,\n\n{ name } ({ email }) hat eine neue Anfrage gesendet:\n\n"
     message_company += f"Betreff: { title }\n\n"
-    message_company += f"Nachricht: { message }\n\n"
-    message_company += f"Bitte schauen Sie im Dashboard nach, um weitere Details zu erhalten: {dashboard_url}cms/messages/{message.id}\n\n"
+    message_company += f"Nachricht: { message.message }\n\n"
+    #message_company += f"Bitte schauen Sie im Dashboard nach, um weitere Details zu erhalten: {dashboard_url}cms/messages/{message.id}\n\n"
     message_company += "Vielen Dank!\n\nMit freundlichen Grüßen,\nIhr YooLink"
     user_settings = UserSettings.objects.filter(user__is_staff=False).first()
     # Replace 'your_company_email' with the actual email address of your company
