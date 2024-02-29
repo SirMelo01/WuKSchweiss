@@ -140,6 +140,13 @@
     {% compress js inline %}
     <script defer src="{% static 'js/cms.js' %}"></script>
     <script src="{% static 'js/cms/content/save-text.js' %}"></script>
+    <script defer src="{% static 'js/cms/content/siteManager.js' %}"></script>
+    <!-- Needed for Galery -->
+    <script defer>
+        $(document).ready(function () {
+            loadImages(false);
+        })
+    </script>
     {% endcompress js %}
     {% endblock javascriptend %}
 
