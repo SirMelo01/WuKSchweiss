@@ -73,7 +73,7 @@ def load_index(request):
     return render(request, 'pages/index.html', context=context)
 
 def shop(request):
-   context={"products": Product.objects.filter(is_active=True, verified=True)}
+   context={"products": Product.objects.filter(is_active=True)}
    context.update(get_opening_hours())
    return render(request, 'pages/shop.html', context)
 
