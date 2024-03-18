@@ -11,7 +11,7 @@ class StaticViewSitemap(Sitemap):
         return [
             'home',
             'impressum', 'datenschutz', 'cookies',
-            'products',
+            'ycms:products',
             'blog:blog',
             ]
     
