@@ -35,4 +35,4 @@ class ProductSitemap(Sitemap):
           return Product.objects.filter(is_active=True)
      
      def lastmod(self, obj):
-          return obj.last_updated
+          return obj.updated_at
