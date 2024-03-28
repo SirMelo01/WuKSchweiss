@@ -118,7 +118,7 @@
         <p class="mt-6">{{product.description}}</p>
         <p class="mt-6">Hersteller: <strong>{{product.brand.name}}</strong></p>
         <div class="mt-6 flex flex-wrap gap-4 w-full">
-          {% for category in product.categories %}
+          {% for category in product.categories.all %}
           <span class="me-2 rounded bg-blue-100 px-2.5 py-0.5 text-base font-medium text-blue-800">{{category.name}}</span>
           {% endfor %}
         </div>
