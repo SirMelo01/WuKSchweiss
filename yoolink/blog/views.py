@@ -7,6 +7,8 @@ from yoolink.ycms.models import Blog
 class Load_Index_Blog(ListView):
     model = Blog
     template_name = 'blog/index_blog.html'
+    def get_queryset(self):
+        return Blog.objects.order_by('-last_updated')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

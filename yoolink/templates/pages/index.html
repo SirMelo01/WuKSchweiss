@@ -255,7 +255,7 @@
           </div>
           <div class="relative">
             <img class="inset-0 object-cover object-bottom w-full rounded-xl shadow-lg h-96 lg:absolute lg:h-full"
-              src="{% static 'images/welding02.jpg' %}"
+              src="{% if flowImage %}{{flowImage.file.url}}{% else %}{% static 'images/welding02.jpg' %}{% endif %}"
               alt="" />
           </div>
         </div>

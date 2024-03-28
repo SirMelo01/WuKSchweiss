@@ -51,7 +51,7 @@ def upload(request):
         "blog_count": Blog.objects.count(),
         "product_count": Product.objects.count(),
         "order_count": Order.objects.filter(verified=True).count(),
-        "order_not_closed_count": Order.objects.exclude(status='COMPLETED').count(),
+        "order_not_closed_count": Order.objects.filter(verified=True).exclude(status='COMPLETED').count(),
         'form': form
     }
     return render(request, 'pages/cms/cms.html', data)
@@ -1081,7 +1081,7 @@ def order_view(request):
     open_orders = Order.objects.filter(status='OPEN', verified=True).count()
 
     # Most bought products
-    most_bought_products = OrderItem.objects.values(
+    most_bought_products = OrderItem.objects.filter(order__status='COMPLETED').values(
     'product__title',
     'product__title_image',
 ).annotate(
@@ -1806,6 +1806,6 @@ def shop(request):
     data = {
         "product_count": Product.objects.count(),
         "order_count": Order.objects.filter(verified=True).count(),
-        "order_not_closed_count": Order.objects.exclude(status='COMPLETED').count(),
+        "order_not_closed_count": Order.objects.filter(verified=True).exclude(status='COMPLETED').count(),
     }
     return render(request, 'pages/cms/shop/shop.html', data)
