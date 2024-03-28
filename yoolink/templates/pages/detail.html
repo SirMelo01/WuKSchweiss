@@ -113,9 +113,15 @@
       </div>
     </div>
     <div class="container mx-auto grid max-w-5xl grid-cols-1 lg:grid-cols-2 gap-8 mt-10">
-      <div class="px-5 mb-4 lg:px-0 lg:mb-0">
+      <div class="mb-4 px-5 lg:mb-0 lg:px-0">
         <h1 class="text-xl font-extrabold uppercase">{{product.title}}</h1>
         <p class="mt-6">{{product.description}}</p>
+        <p class="mt-6">Hersteller: <strong>{{product.brand.name}}</strong></p>
+        <div class="mt-6 flex flex-wrap gap-4 w-full">
+          {% for category in product.categories %}
+          <span class="me-2 rounded bg-blue-100 px-2.5 py-0.5 text-base font-medium text-blue-800">{{category.name}}</span>
+          {% endfor %}
+        </div>
       </div>
       <div class="hidden justify-center lg:flex">
         <img src="{{product.title_image.url}}" class="rounded-lg max-w-72" alt="" />
