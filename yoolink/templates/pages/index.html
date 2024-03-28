@@ -170,8 +170,8 @@
                 <div class="w-px h-full bg-gray-300"></div>
               </div>
               <div class="pt-1 pb-8">
-                <p class="mb-2 text-lg font-bold text-gray-900">Anfallende Schweißarbeiten</p>
-                <p class="text-gray-600 text-base sm:text-lg">Reparationen, Aluminium (CroNi-Bereich), etc.</p>
+                <p class="mb-2 text-lg font-bold text-gray-900">{% if flowText1 %}{{flowText1.title}}{% else %}Anfallende Schweißarbeiten{% endif %}</p>
+                <p class="text-gray-600 text-base sm:text-lg">{% if flowText1 %}{{flowText1.description}}{% else %}Reparationen, Aluminium (CroNi-Bereich), etc.{% endif %}</p>
               </div>
             </div>
             <div class="flex">
@@ -188,9 +188,9 @@
                 <div class="w-px h-full bg-gray-300"></div>
               </div>
               <div class="pt-1 pb-8">
-                <p class="mb-2 text-lg font-bold text-gray-900">Kontaktaufnahme</p>
+                <p class="mb-2 text-lg font-bold text-gray-900">{% if flowText2 %}{{flowText2.title}}{% else %}Kontaktaufnahme{% endif %}</p>
                 <p class="text-gray-600 text-base sm:text-lg">
-                  Vereinabaren Sie einen Termin mit uns über die angegebenen Kontaktwege.
+                  {% if flowText2 %}{{flowText2.description}}{% else %}Vereinabaren Sie einen Termin mit uns über die angegebenen Kontaktwege.{% endif %}
                 </p>
               </div>
             </div>
@@ -208,9 +208,9 @@
                 <div class="w-px h-full bg-gray-300"></div>
               </div>
               <div class="pt-1 pb-8">
-                <p class="mb-2 text-lg font-bold text-gray-900">Individuelle Absprache</p>
+                <p class="mb-2 text-lg font-bold text-gray-900">{% if flowText3 %}{{flowText3.title}}{% else %}Individuelle Absprache{% endif %}</p>
                 <p class="text-gray-600 text-base sm:text-lg">
-                  Geimansam besprechen wir mit Ihnen zusammen die anfallende Arbeit und geben Ihnen ein auf Sie abgestimmtes Angebot.
+                  {% if flowText3 %}{{flowText3.description}}{% else %}Gemeinsam besprechen wir mit Ihnen zusammen die anfallende Arbeit und geben Ihnen ein auf Sie abgestimmtes Angebot.{% endif %}
                 </p>
               </div>
             </div>
@@ -228,9 +228,9 @@
                 <div class="w-px h-full bg-gray-300"></div>
               </div>
               <div class="pt-1 pb-8">
-                <p class="mb-2 text-lg font-bold text-gray-900">Ausführung</p>
+                <p class="mb-2 text-lg font-bold text-gray-900">{% if flowText4 %}{{flowText4.title}}{% else %}Ausführung{% endif %}</p>
                 <p class="text-gray-600 text-base sm:text-lg">
-                  Im nächsten Schritt erledigen wir die Arbeit und geben Ihnen Rückmeldung.
+                  {% if flowText4 %}{{flowText4.description}}{% else %}Im nächsten Schritt erledigen wir die Arbeit und geben Ihnen Rückmeldung.{% endif %}
                 </p>
               </div>
             </div>
@@ -248,7 +248,7 @@
               <div class="pt-1">
                 <p class="mb-2 text-lg font-bold"></p>
                 <p class="text-gray-600 text-base sm:text-lg">
-                  Sie erhalten ihre Ware bearbeitet zurück.
+                  {% if flowTextEnd %}{{flowTextEnd.description}}{% else %}Sie erhalten ihre Ware bearbeitet zurück.{% endif %}
                 </p>
               </div>
             </div>

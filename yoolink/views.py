@@ -61,6 +61,23 @@ def load_index(request):
     if TextContent.objects.filter(name="main_contact").exists():
         context["contactText"] = TextContent.objects.get(name='main_contact')
     
+    # Workflow
+    if TextContent.objects.filter(name="main_flow_1").exists():
+        context["flowText1"] = TextContent.objects.get(name='main_flow_1')
+
+    if TextContent.objects.filter(name="main_flow_2").exists():
+        context["flowText2"] = TextContent.objects.get(name='main_flow_2')
+
+    if TextContent.objects.filter(name="main_flow_3").exists():
+        context["flowText3"] = TextContent.objects.get(name='main_flow_3')
+
+    if TextContent.objects.filter(name="main_flow_4").exists():
+        context["flowText4"] = TextContent.objects.get(name='main_flow_4')
+
+    if TextContent.objects.filter(name="main_flow_end").exists():
+        context["flowTextEnd"] = TextContent.objects.get(name='main_flow_end')
+    
+
     # Images
     if fileentry.objects.filter(place='main_hero').exists():
         context["heroImage"] = fileentry.objects.get(place='main_hero')
@@ -71,6 +88,27 @@ def load_index(request):
     context["user_settings"] = UserSettings.objects.filter(user__is_staff=False).first() 
     context.update(get_opening_hours())
     return render(request, 'pages/index.html', context=context)
+
+def team(request):
+    context = {}
+
+    # Galerie
+    if Galerie.objects.filter(place='team_galery').exists():
+        context["teamGalery"] = Galerie.objects.get(place='team_galery').images.all()
+
+    # Images
+    if fileentry.objects.filter(place='team_hero').exists():
+        context["heroImage"] = fileentry.objects.get(place='team_hero')
+
+    # Hero Text
+    if TextContent.objects.filter(name="team_hero").exists():
+        context["heroText"] = TextContent.objects.get(name='team_hero')
+
+    # Team Text
+    if TextContent.objects.filter(name="team_team").exists():
+        context["teamText"] = TextContent.objects.get(name='team_team')
+
+    return render(request, 'pages/team.html', context)
 
 def shop(request):
    context={"products": Product.objects.filter(is_active=True)}

@@ -6,7 +6,7 @@ from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
-from yoolink.views import load_index, shop, detail, impressum, datenschutz, cookies
+from yoolink.views import load_index, team, shop, detail, impressum, datenschutz, cookies
 from django.views.generic import RedirectView
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.urls import path, include
@@ -23,6 +23,7 @@ sitemaps = {
 
 urlpatterns = [
     path("", view=load_index, name="home"),
+    path("team/", view=team, name="team"),
     path("products/", view=shop, name="products"),
     path("products/<int:product_id>-<slug:slug>/", view=detail, name="product-detail"),
     # Django Admin, use {% url 'admin:index' %}

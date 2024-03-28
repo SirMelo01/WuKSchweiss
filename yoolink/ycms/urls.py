@@ -48,6 +48,11 @@ urlpatterns = [
     path('seiten/hauptseite/Workflow/', views.site_view_main_flow, name='site_hauptseite_workflow'),
     path('seiten/hauptseite/Kontakt/', views.site_view_main_contact, name='site_hauptseite_contact'),
     path('seiten/hauptseite/Produkte/', views.site_view_main_angebote, name='site_hauptseite_products'),
+    
+    path('seiten/team/', views.site_view_team, name='site_team'),
+    path('seiten/team/Hero/', views.site_view_team_hero, name='site_team_hero'),
+    path('seiten/team/Team/', views.site_view_team_team, name='site_team_team'),
+
     # Products
     path('products/', views.product_view, name='products'),
     path('products/search/', views.product_search, name='product_search'),

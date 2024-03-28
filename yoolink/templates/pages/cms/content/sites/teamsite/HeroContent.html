@@ -1,0 +1,63 @@
+{% extends "cmsbase.html" %}
+{% load compress static %}
+{% block title %} {{block.super}} | CMS - Seiteninhalt {% endblock %}
+
+<!-- Needed for Galery (Slick) -->
+
+{% block content %}
+
+{% include "pages/cms/components/ImageSelectModal.html" %}
+
+
+<div class="container mx-auto mt-8">
+    <div class="flex justify-between">
+        <h1 class="text-2xl"><a href="{% url 'cms:sites' %}" class="text-blue-500">Seiten</a> / <a
+                href="{% url 'cms:site_team' %}" class="text-blue-500">Teamseite</a> / <span>Hero</span></h1>
+        <div>
+            {% csrf_token %}
+            <a class="mr-6 rounded bg-green-500 px-4 py-2 font-bold text-white hover:cursor-pointer hover:bg-green-700"
+                id="saveTextData" name="team_hero"> Speichern </a>
+        </div>
+    </div>
+
+    <section class="text-gray-800 mt-6">
+        <div class="container mx-auto flex max-w-screen-xl flex-col justify-center sm:py-12 lg:flex-row lg:justify-between lg:p-10 lg:py-24">
+          <div class="flex flex-col items-center justify-center rounded-sm p-6 text-center w-full lg:max-w-lg xl:max-w-xl">
+            <input class="mb-6 mt-3 inline-block w-full appearance-none rounded-lg border-2 border-gray-200 bg-gray-200 px-4 py-2 text-center text-2xl font-bold leading-tight tracking-tight focus:border-blue-500 focus:bg-white focus:outline-none" id="title" type="text" value="{% if textContent and textContent.title %}{{textContent.title}}{% else %}Über uns{% endif %}" />
+            <textarea id="description" class="mb-6 h-52 w-full appearance-none rounded-lg border-2 border-gray-200 bg-gray-200 px-4 py-2 text-base leading-tight text-gray-800 focus:border-blue-500 focus:bg-white focus:outline-none ">{% if textContent and textContent.description %}{{textContent.description}}{% else %}Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis cum, quaerat eveniet culpa sapiente deleniti exercitationem assumenda nam dolorum, quasi possimus sed, eligendi in velit beatae! Delectus quo asperiores adipisci!{% endif %}
+            </textarea>
+            <div class="flex flex-col space-y-4 sm:flex-row sm:items-center sm:justify-center sm:space-x-4 sm:space-y-0">
+              <input id="buttonText" rel="noopener noreferrer" href="/#contact" class="rounded bg-blue-500 px-8 py-3 text-lg font-semibold text-gray-50 transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+              value="{% if textContent %}{{textContent.buttonText}}{% else %}Kontakt{% endif %} "></input>
+            </div>
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="relative items-center justify-center p-6 md:p-0">
+                  <img class="max-h-96 rounded-2xl object-contain shadow-2xl content-image" title="Image" src="{% if heroImage %}{{ heroImage.file.url }}{% else %}https://placehold.co/600x400{% endif %}" alt="Image" key="team_hero" imgId="{% if heroImage %}{{heroImage.id}}{% endif %}"/>
+                  <span
+                    class="absolute top-0 left-0 inline-block px-2 py-1 text-sm font-semibold text-white bg-orange-500 rounded-full not-sortable z-40 hover:cursor-pointer edit-img"><i
+                        class="bi bi-pencil-square"></i>
+                  </span>
+              </div>
+          </div>
+         
+        </div>
+      </section>
+      
+</div>
+
+{% endblock content %}
+
+{% block javascriptend %}
+{% compress js inline %}
+<script defer src="{% static 'js/cms.js' %}"></script>
+<script src="{% static 'js/cms/content/save-text.js' %}"></script>
+<script defer src="{% static 'js/cms/content/siteManager.js' %}"></script>
+<!-- Needed for Galery -->
+<script defer>
+    $(document).ready(function () {
+        loadImages(false);
+    })
+</script>
+{% endcompress js %}
+{% endblock javascriptend %}

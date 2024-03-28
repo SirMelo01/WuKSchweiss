@@ -1,0 +1,98 @@
+{% extends "cmsbase.html" %}
+{% load compress static %}
+{% block title %} {{block.super}} | CMS - Seiteninhalt {% endblock %}
+
+<!-- Needed for Galery (Slick) -->
+{% block javascript %}
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/cms/slick/slick-carousel.css' %}" />
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/cms/slick/slick-theme.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+{% include "pages/cms/components/GalerySelectModal.html" %}
+
+<div class="container mx-auto mt-8">
+    <div class="flex justify-between">
+        <h1 class="text-2xl "><a href="{% url 'cms:sites' %}" class="text-blue-500">Seiten</a> / <a
+                href="{% url 'cms:site_team' %}" class="text-blue-500">Teamseite</a> / <span>Team</span></h1>
+        <div>
+            {% csrf_token %}
+            <a class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-6 hover:cursor-pointer"
+                id="saveTextData" name="team_team">
+                Speichern
+            </a>
+        </div>
+    </div>
+
+    <section class="scroll-my-4 -mb-0 xs:-mb-48 lg:-mb-0 mt-8" id="Responsive">
+        <div class="mb-5 lg:mb-0 h-full container mx-auto px-2 flex flex-col justify-center items-center">
+            <div class="max-w-3xl w-full mb-5">
+                <input
+                    class="bg-gray-200 mt-3 appearance-none text-center border-2 border-gray-200 rounded-lg w-full inline-block py-2 px-4 mb-6 text-2xl font-bold tracking-tight text-teal-900 uppercase leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                    id="title" type="text"
+                    value="{% if textContent and textContent.title %}{{textContent.title}}{% else %}Unser Team{% endif %}">
+                <textarea rows="6"
+                    class="bg-gray-200 h-full rounded-lg appearance-none border-2 border-gray-200 w-full py-2 px-4 text-base text-gray-800 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                    id="description" type="text">{% if textContent and textContent.description %}{{textContent.description}}{% else %}Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, laborum voluptate corrupti iure cum consequuntur explicabo consequatur nam molestias quae at velit quibusdam voluptatibus tenetur aspernatur assumenda, non ducimus sit?{% endif %}
+                </textarea>
+            </div>
+        </div>
+        <div class="flex flex-col justify-center w-full items-center">
+            <div class="galery-container relative justify-center max-w-3xl w-full mt-4" galery-id="-1" key="team_galery">
+                <span class="absolute top-0 left-0 inline-block px-2 py-1 text-sm font-semibold text-white bg-orange-500 rounded-full z-40 hover:cursor-pointer edit-galery"><i class="bi bi-pencil-square"></i></span>
+                <div class="carousel rounded-lg">
+                    {% if teamGalery %}
+                        {% for img in teamGalery %}
+                        <div>
+                            <img src="{{img.upload.url}}" alt="{{img.title}}" class="w-full rounded-xl h-96" />
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                    <div>
+                        <img src="https://placehold.co/600x400" 
+                            alt="Template Design" class="w-full rounded-xl h-96"/>
+                    </div>
+                    <div>
+                        <img src="https://placehold.co/600x400" 
+                            alt="Template Design" class="w-full rounded-xl h-96"/>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {% block javascriptend %}
+    {% compress js inline %}
+    <script defer src="{% static 'js/cms.js' %}"></script>
+    <script src="{% static 'js/cms/content/save-text.js' %}"></script>
+    <script defer src="{% static 'js/cms/content/siteManager.js' %}"></script>
+    <!-- Needed for Galery -->
+    <script type="text/javascript" src="{% static 'js/cms/slick/slick.min.js' %}"></script>
+    <script>
+        $('.carousel').slick({
+        dots: true,  // Display navigation dots
+        arrows: true,  // Display navigation arrows
+        infinite: true,  // Enable infinite looping
+        slidesToShow: 1,  // Number of slides to show at once
+        slidesToScroll: 1,  // Number of slides to scroll at a time
+        autoplay: true,
+        autoplaySpeed: 3000,
+        // Add any other configuration options as needed
+    });
+    </script>
+    <script defer>
+        $(document).ready(function () {
+            loadGalerien(false);
+        })
+    </script>
+    {% endcompress js %}
+    {% endblock javascriptend %}
+
+
+
+    {% endblock content %}

@@ -593,6 +593,32 @@ def content_view(request):
 def site_view_main(request):
     return render(request, "pages/cms/content/sites/MainSite.html", {})
 
+@login_required(login_url='login')
+def site_view_team(request):
+    return render(request, "pages/cms/content/sites/TeamSite.html", {})
+
+# Team Site - Hero Section
+@login_required(login_url='login')
+def site_view_team_hero(request):
+    data = {}
+    if TextContent.objects.filter(name="team_hero").exists():
+        data["textContent"] = TextContent.objects.get(name='team_hero')
+    if fileentry.objects.filter(place='team_hero').exists():
+        data["heroImage"] = fileentry.objects.get(place='team_hero') 
+    return render(request, "pages/cms/content/sites/teamsite/HeroContent.html", data)
+
+# Team Site - Team Section
+@login_required(login_url='login')
+def site_view_team_team(request):
+    data = {}
+    if TextContent.objects.filter(name="team_team").exists():
+        data["textContent"] = TextContent.objects.get(name='team_team')
+    if Galerie.objects.filter(place='team_galery').exists():
+        data["teamGalery"] = Galerie.objects.get(place='team_galery').images.all()
+
+    return render(request, "pages/cms/content/sites/teamsite/TeamContent.html", data)
+
+
 # Main Site - Hero Section
 @login_required(login_url='login')
 def site_view_main_hero(request):
@@ -635,8 +661,17 @@ def site_view_main_angebote(request):
 @login_required(login_url='login')
 def site_view_main_flow(request):
     data = {}
-    if TextContent.objects.filter(name="main_flow1").exists():
-        data["textContent1"] = TextContent.objects.get(name='main_flow1')
+    if TextContent.objects.filter(name="main_flow_1").exists():
+        data["textContent1"] = TextContent.objects.get(name='main_flow_1')
+    if TextContent.objects.filter(name="main_flow_2").exists():
+        data["textContent2"] = TextContent.objects.get(name='main_flow_2')
+    if TextContent.objects.filter(name="main_flow_3").exists():
+        data["textContent3"] = TextContent.objects.get(name='main_flow_3')
+    if TextContent.objects.filter(name="main_flow_4").exists():
+        data["textContent4"] = TextContent.objects.get(name='main_flow_4')
+    if TextContent.objects.filter(name="main_flow_end").exists():
+        data["textContent5"] = TextContent.objects.get(name='main_flow_end')
+    # Image
     if fileentry.objects.filter(place='main_flow').exists():
         data["flowImage"] = fileentry.objects.get(place='main_flow')
     return render(request, "pages/cms/content/sites/mainsite/FlowContent.html", data)
