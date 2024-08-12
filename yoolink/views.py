@@ -107,7 +107,7 @@ def team(request):
     # Team Text
     if TextContent.objects.filter(name="team_team").exists():
         context["teamText"] = TextContent.objects.get(name='team_team')
-
+    context.update(get_opening_hours())
     return render(request, 'pages/team.html', context)
 
 def shop(request):
